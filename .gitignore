@@ -2,6 +2,18 @@
 # Although this should work for most versions of grails, it is
 # suggested that you use the "grails integrate-with --git" command
 # to generate your .gitignore file.
+Thumbs.db
+.DS_Store
+.gradle
+build/
+out/
+.idea
+*.iml
+*.ipr
+*.iws
+.project
+.settings
+.classpath
 
 # web application files
 /web-app/WEB-INF/classes

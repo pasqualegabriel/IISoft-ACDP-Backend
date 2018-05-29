@@ -1,3 +1,6 @@
 language: groovy
 
-script: gradle cucumber
+before_install:
+- chmod +x gradlew
+
+script: ./gradlew cucumber

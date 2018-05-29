@@ -13,6 +13,7 @@ buildscript {
 version "0.1"
 group "iisoft.acdp.backend"
 
+apply plugin:"groovy"
 apply plugin:"eclipse"
 apply plugin:"idea"
 apply plugin:"war"
@@ -40,8 +41,8 @@ task cucumber() {
     doLast {
         javaexec {
             main = "cucumber.api.cli.Main"
-            classpath = configurations.cucumberRuntime
-            args = ['--plugin', 'pretty', '--glue', 'src/test/groovy/gradle/cucumber', 'src/test/resources']
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = ['--plugin', 'pretty', '--glue', 'src/integrationTest/groovy', 'src/integrationTest/resources']
         }
     }
 }

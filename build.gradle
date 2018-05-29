@@ -24,6 +24,28 @@ repositories {
     maven { url "https://repo.grails.org/grails/core" }
 }
 
+project.ext {
+    cucumberVersion = '1.2.5'
+    junitVersion = '4.11'
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testRuntime
+    }
+}
+
+task cucumber() {
+    dependsOn assemble
+    doLast {
+        javaexec {
+            main = "cucumber.api.cli.Main"
+            classpath = configurations.cucumberRuntime
+            args = ['--plugin', 'pretty', '--glue', 'src/test/groovy/gradle/cucumber', 'src/test/resources']
+        }
+    }
+}
+
 dependencies {
     compile "org.springframework.boot:spring-boot-starter-logging"
     compile "org.springframework.boot:spring-boot-autoconfigure"
@@ -58,6 +80,11 @@ dependencies {
     testRuntime "org.seleniumhq.selenium:selenium-chrome-driver:2.47.1"
     testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
+
+    testCompile "info.cukes:cucumber-groovy:${project.cucumberVersion}"
+    testCompile "info.cukes:cucumber-junit:${project.cucumberVersion}"
+
+    testCompile "junit:junit:${project.junitVersion}"
 }
 
 bootRun {

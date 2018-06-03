@@ -13,8 +13,6 @@ class PublicationController extends RestfulController<Publication> {
         super(Publication)
     }
 
-    def index() { }
-
     // get    "/publications"
     def allPublications() {
         respond  publicationService.allPublications()

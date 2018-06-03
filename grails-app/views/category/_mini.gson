@@ -1,0 +1,10 @@
+import iisoft.acdp.backend.Category
+
+model {
+    Category aCategory
+}
+
+json {
+    name         aCategory.name
+    publications tmpl.publication(aCategory.publications)
+}

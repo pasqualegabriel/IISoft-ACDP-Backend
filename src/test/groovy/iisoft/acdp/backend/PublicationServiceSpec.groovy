@@ -1,9 +1,9 @@
 package iisoft.acdp.backend
 
-import grails.testing.gorm.DomainUnitTest
+import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification
 
-class PublicationSpec extends Specification implements DomainUnitTest<Publication> {
+class PublicationServiceSpec extends Specification implements ServiceUnitTest<PublicationService>{
 
     def setup() {
     }
@@ -12,7 +12,7 @@ class PublicationSpec extends Specification implements DomainUnitTest<Publicatio
     }
 
     void "test something"() {
-        expect:"fix me"
+        expect:
             true
     }
 }

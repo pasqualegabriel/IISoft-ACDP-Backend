@@ -1,0 +1,7 @@
+import iisoft.acdp.backend.Category
+
+model {
+    Category aCategoryToRender
+}
+
+json tmpl.mini(aCategoryToRender)

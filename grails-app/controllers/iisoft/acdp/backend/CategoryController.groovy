@@ -7,7 +7,7 @@ class CategoryController extends RestfulController<Category> {
 
     def categoryService
 
-	static responseFormats = ['json']
+	static responseFormats = ['json', 'xml']
 
     CategoryController() {
         super(Category)

@@ -1,0 +1,7 @@
+import iisoft.acdp.backend.Publication
+
+model {
+    Publication aPublicationToRender
+}
+
+json tmpl.mini(aPublicationToRender)

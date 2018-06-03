@@ -1,0 +1,12 @@
+import iisoft.acdp.backend.Publication
+
+model {
+    Publication publication
+}
+
+json {
+    name            publication.name
+    title           publication.title
+    whoPublishedIt  publication.whoPublishedIt
+    date            publication.date
+}

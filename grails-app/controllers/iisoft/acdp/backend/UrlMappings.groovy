@@ -15,6 +15,8 @@ class UrlMappings {
 
         get    "/categories"   (controller:"category", action:"allCategories")
 
+        get    "/publications"   (controller:"publication", action:"allPublications")
+
         "500"(view: '/error')
         "404"(view: '/notFound')
     }

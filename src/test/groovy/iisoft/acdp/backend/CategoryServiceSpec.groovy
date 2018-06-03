@@ -12,7 +12,7 @@ class CategoryServiceSpec extends Specification implements ServiceUnitTest<Categ
     }
 
     void "test something"() {
-        expect:"fix me"
+        expect:
             true
     }
 }

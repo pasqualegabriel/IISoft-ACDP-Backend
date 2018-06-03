@@ -13,6 +13,7 @@ class UrlMappings {
 
         get    "/user"         (controller:"user", action:"userPepita")
 
+        get    "/categories"   (controller:"category", action:"allCategories")
 
         "500"(view: '/error')
         "404"(view: '/notFound')

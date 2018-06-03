@@ -1,10 +1,9 @@
 package iisoft.acdp.backend
 
-
 import grails.rest.*
 import grails.converters.*
 
-class UserController  extends RestfulController<User> {
+class UserController extends RestfulController<User> {
 
     def userService
 
@@ -13,7 +12,6 @@ class UserController  extends RestfulController<User> {
     UserController() {
         super(User)
     }
-
 
     //     get    "/user"         (controller:"user", action:"userPepita")
     def userPepita(){

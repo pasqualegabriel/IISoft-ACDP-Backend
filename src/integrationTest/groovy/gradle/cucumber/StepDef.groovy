@@ -1,6 +1,5 @@
 package gradle.cucumber
 
-import cucumber.api.PendingException
 import cucumber.api.groovy.EN
 import cucumber.api.groovy.Hooks
 import iisoft.acdp.backend.User

@@ -6,23 +6,28 @@ class BootStrap {
         def pepita    = new User(name:"pepita")
         pepita.save()
 
-        def publication1 = new Publication(name: "Retrospective",
-                                           title: "RetrospectiveIISoft",
-                                           whoPublishedIt: "Diego",
-                                           date: new Date(2018, 06, 22))
-        def publication2 = new Publication(name: "BDD",
-                                           title: "BDDIISoft",
-                                           whoPublishedIt: "Pablo",
-                                           date: new Date(2017, 05, 10))
-        def publication3 = new Publication(name: "TDD",
-                                           title: "TDDIISoft",
-                                           whoPublishedIt: "Diego",
-                                           date: new Date(2016, 02, 14))
-
-        def category1 = new Category(name:"IISoftware", publications: [publication1])
-        def category2 = new Category(name:"Intro", publications: [publication2, publication3])
+      def category1 = new Category(name:"IISoftware" )
+        def category2 = new Category(name:"Intro")
         category1.save()
         category2.save()
+
+               def publication1 = new Publication(text:"CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS" ,idCategory: category1.id,name: "Retrospective",
+                       title: "RetrospectiveIISoft",
+                       whoPublishedIt: "Diego",
+                       date: new Date(2018, 06, 22))
+               def publication2 = new Publication(text:"CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS" ,idCategory: category2.id,name: "BDD",
+                       title: "BDDIISoft",
+                       whoPublishedIt: "Pablo",
+                       date: new Date(2017, 05, 10))
+               def publication3 = new Publication(text:"CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS" ,idCategory: category2.id,name: "TDD",
+                       title: "TDDIISoft",
+                       whoPublishedIt: "Diego",
+                       date: new Date(2016, 02, 14))
+
+                      category1.publications = [publication1]
+                      category2.publications = [publication2, publication3]
+                      category1.save()
+                      category2.save()
     }
 
     def destroy = {

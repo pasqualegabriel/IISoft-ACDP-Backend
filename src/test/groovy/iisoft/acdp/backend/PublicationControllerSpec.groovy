@@ -38,7 +38,6 @@ class PublicationControllerSpec extends HibernateSpec implements ControllerUnitT
                     title          publication.title
                     date           publication.date
                     idCategory     publication.idCategory
-                    name           publication.name
                     whoPublishedIt publication.whoPublishedIt
                     text           publication.text
                 }
@@ -79,7 +78,6 @@ class PublicationControllerSpec extends HibernateSpec implements ControllerUnitT
                 title          publication.title
                 date           publication.date
                 idCategory     publication.idCategory
-                name           publication.name
                 whoPublishedIt publication.whoPublishedIt
                 text           publication.text
             }

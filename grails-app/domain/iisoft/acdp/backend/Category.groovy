@@ -5,7 +5,9 @@ class Category {
     String name
     List<Publication> publications
 
-    Category(){}
+    Category(){
+        publications = []
+    }
 
     static constraints = {
 

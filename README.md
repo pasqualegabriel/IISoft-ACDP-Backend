@@ -16,10 +16,10 @@ Number |       Name              | UNQ-Records |    EMail
 3      | Dominikow Ivan Diego    |    37517    | dominikowivan@gmail.com
 4      | Degano Victor           |    26106    | flame.el22@gmail.com
 
-### Springs
+### Sprints
 
-- [Spring 0][1]
-- [Spring 1][2]
+- [Sprint 0][1]
+- [Sprint 1][2]
 
-[1]: ./springs/spring0/README.md
-[2]: ./springs/spring1/README.md
+[1]: ./sprints/sprint0/README.md
+[2]: ./sprints/sprint1/README.md

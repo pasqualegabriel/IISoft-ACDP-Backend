@@ -19,8 +19,8 @@ class UrlMappings {
         get    "/publication/$idCat"            (controller:"publication", action:"publications")
         post   "/publication"                   (controller:"publication", action:"savePublication")
 
-        get    "/comentarys/$idPub"             (controller:"comentary",   action:"getComentarysOfPublication")
-        post   "/comentary"                     (controller:"comentary",   action:"saveComentary")
+        get    "/comments/$idPub"             (controller:"commentary",   action:"getCommentsOfPublication")
+        post   "/commentary"                     (controller:"commentary",   action:"saveCommentary")
 
         "500"(view: '/error')
         "404"(view: '/notFound')

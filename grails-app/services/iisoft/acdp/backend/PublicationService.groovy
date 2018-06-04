@@ -9,11 +9,11 @@ class PublicationService {
         Publication.findAll()
     }
 
-    def getPublicationsOfCategory(long idOfCategory){
+    def getPublicationsOfCategory(long idOfCategory) {
         Publication.findAllByIdCategory(idOfCategory)
     }
 
-    def save (Publication aPublication){
+    def save(Publication aPublication) {
         aPublication.save()
     }
 }

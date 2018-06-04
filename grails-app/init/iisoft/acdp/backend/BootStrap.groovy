@@ -29,37 +29,35 @@ class BootStrap {
         category1.save()
         category2.save()
 
-        Comentary comentaryForPub1        = new Comentary(text:"CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS" ,idPublication: publication1.id,
+        Commentary commentaryForPub1        = new Commentary(text:"CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS" ,idPublication: publication1.id,
                 whoPublishedIt: "Diego",
                 date: new Date(2013, 07, 22))
-        Comentary otherComentaryForPub1        = new Comentary(text:"CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS" ,idPublication: publication1.id,
-                whoPublishedIt: "Diego",
-                date: new Date(2013, 07, 22))
-
-        Comentary comentaryForPub2        = new Comentary(text:"CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS" ,idPublication: publication2.id,
+        Commentary otherCommentaryForPub1        = new Commentary(text:"CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS" ,idPublication: publication1.id,
                 whoPublishedIt: "Diego",
                 date: new Date(2013, 07, 22))
 
-        Comentary comentaryForPub3        = new Comentary(text:"CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS" ,idPublication: publication3.id,
-                whoPublishedIt: "Diego",
-                date: new Date(2013, 07, 22))
-        Comentary otherComentaryForPub3        = new Comentary(text:"CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS" ,idPublication: publication3.id,
-                whoPublishedIt: "Diego",
-                date: new Date(2013, 07, 22))
-        Comentary anotherComentaryForPub3        = new Comentary(text:"CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS" ,idPublication: publication3.id,
+        Commentary commentaryForPub2        = new Commentary(text:"CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS" ,idPublication: publication2.id,
                 whoPublishedIt: "Diego",
                 date: new Date(2013, 07, 22))
 
-        comentaryForPub1.save()
-        otherComentaryForPub1.save()
+        Commentary commentaryForPub3        = new Commentary(text:"CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS" ,idPublication: publication3.id,
+                whoPublishedIt: "Diego",
+                date: new Date(2013, 07, 22))
+        Commentary otherCommentaryForPub3        = new Commentary(text:"CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS" ,idPublication: publication3.id,
+                whoPublishedIt: "Diego",
+                date: new Date(2013, 07, 22))
+        Commentary anotherCommentaryForPub3        = new Commentary(text:"CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS" ,idPublication: publication3.id,
+                whoPublishedIt: "Diego",
+                date: new Date(2013, 07, 22))
 
-        comentaryForPub2.save()
+        commentaryForPub1.save()
+        otherCommentaryForPub1.save()
 
-        comentaryForPub3.save()
-        otherComentaryForPub3.save()
-        anotherComentaryForPub3.save()
+        commentaryForPub2.save()
 
-
+        commentaryForPub3.save()
+        otherCommentaryForPub3.save()
+        anotherCommentaryForPub3.save()
     }
 
     def destroy = {

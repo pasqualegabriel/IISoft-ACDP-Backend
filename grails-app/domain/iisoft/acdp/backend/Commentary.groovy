@@ -1,6 +1,6 @@
 package iisoft.acdp.backend
 
-class Comentary {
+class Commentary {
 
     long idPublication
     Date   date
@@ -14,5 +14,5 @@ class Comentary {
         date            nullable:true
     }
 
-    Comentary(){}
+    Commentary(){}
 }

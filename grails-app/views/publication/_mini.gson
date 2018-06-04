@@ -5,7 +5,6 @@ model {
 }
 
 json {
-    name            publication.name
     title           publication.title
     whoPublishedIt  publication.whoPublishedIt
     date            publication.date

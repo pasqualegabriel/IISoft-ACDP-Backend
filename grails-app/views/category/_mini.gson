@@ -1,10 +1,11 @@
 import iisoft.acdp.backend.Category
 
 model {
-    Category aCategory
+    Category category
 }
 
 json {
-    name         aCategory.name
-    publications tmpl.publication(aCategory.publications)
+    id           category.id
+    name         category.name
+    publications tmpl.publication(category.publications)
 }

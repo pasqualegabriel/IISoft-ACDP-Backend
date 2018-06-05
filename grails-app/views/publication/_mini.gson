@@ -5,7 +5,11 @@ model {
 }
 
 json {
+    id              publication.id
+    idCategory      publication.idCategory
     title           publication.title
     whoPublishedIt  publication.whoPublishedIt
+    text            publication.text
     date            publication.date
 }
+

@@ -1,0 +1,16 @@
+import iisoft.acdp.backend.Commentary
+
+model {
+    Commentary commentary
+}
+
+json {
+    id              commentary.id
+    idPublication   commentary.idPublication
+    date            commentary.date
+    text            commentary.text
+    whoPublishedIt  commentary.whoPublishedIt
+}
+
+
+

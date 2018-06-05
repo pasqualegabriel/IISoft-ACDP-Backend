@@ -20,7 +20,7 @@ class PublicationController extends RestfulController<Publication> {
 
     //get    "/publication/$idCat"
     def publications(){
-        def somePublications = publicationService.getPublicationsOfCategory(params.idCat)
+        def somePublications = publicationService.getPublicationsOfCategory(params.idCat as long)
         if (somePublications.size() == 0) {
             render status: 404
         }

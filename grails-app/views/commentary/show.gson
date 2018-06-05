@@ -1,0 +1,7 @@
+import iisoft.acdp.backend.Commentary
+
+model {
+    Commentary aCommentaryToRender
+}
+
+json tmpl.mini(aCommentaryToRender)

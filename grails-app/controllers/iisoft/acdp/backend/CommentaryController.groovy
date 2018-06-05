@@ -15,7 +15,7 @@ class CommentaryController extends RestfulController<Commentary> {
 
     //get    "/comments/$idPub"
     def getCommentsOfPublication(){
-        def someComments = commentaryService.getCommentsOfPublication(params.idPub)
+        def someComments = commentaryService.getCommentsOfPublication(params.idPub as long)
         respond someComments
     }
 

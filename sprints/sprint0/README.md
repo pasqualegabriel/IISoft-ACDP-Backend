@@ -1,5 +1,8 @@
 # Iteración 0
 
+## ---------- Visual Story Mapping ----------
+![Visual Story Mapping ACaraDePerro](vsm0.pdf)
+
 ## Retrospectiva
 
 Método de retrospectiva: Mad, Sad, Glad

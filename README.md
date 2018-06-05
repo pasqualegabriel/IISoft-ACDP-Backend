@@ -4,9 +4,6 @@
 
 University Proyect of IISoft - UNQ
 
-## ---------- Visual Story Mapping ----------
-[https://acaradeperro.storiesonboard.com/m/tpelementos](https://acaradeperro.storiesonboard.com/m/tpelementos)
-
 ### Members
 
 Number |       Name              | UNQ-Records |    EMail

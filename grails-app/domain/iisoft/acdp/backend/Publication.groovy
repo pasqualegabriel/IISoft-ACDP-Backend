@@ -2,7 +2,7 @@ package iisoft.acdp.backend
 
 class Publication {
 
-    Long  idCategory
+    long  idCategory
     String  title
     String  whoPublishedIt
     String  text

@@ -11,72 +11,70 @@ class BootStrap {
         category1.save()
         category2.save()
 
-        def publication1 = new Publication  (   text            : "CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS",
-                                                idCategory      : category1.id,
-                                                name            : "Retrospective",
-                                                title           : "RetrospectiveIISoft",
-                                                whoPublishedIt  : "Diego",
-                                                date            : new Date(2018, 06, 22)
-                                            )
+        def publication1 = new Publication( text           : "The Sprint Retrospective",
+                                            idCategory     : category1.id,
+                                            name           : "Retrospective",
+                                            title          : "RetrospectiveIISoft",
+                                            whoPublishedIt : "Diego",
+                                            date           : new Date(2018, 06, 22)
+                                          )
 
-        def publication2 = new Publication  (   text            : "CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS",
-                                                idCategory      : category2.id,
-                                                name            : "BDD",
-                                                title           : "BDDIISoft",
-                                                whoPublishedIt  : "Pablo",
-                                                date            : new Date(2017, 05, 10)
-                                            )
+        def publication2 = new Publication( text           : "Behavior-Driven Development",
+                                            idCategory     : category2.id,
+                                            name           : "BDD",
+                                            title          : "BDDIISoft",
+                                            whoPublishedIt : "Pablo",
+                                            date           : new Date(2017, 05, 10)
+                                          )
 
-        def publication3 = new Publication  (   text            : "CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS",
-                                                idCategory      : category2.id,
-                                                name            : "TDD",
-                                                title           : "TDDIISoft",
-                                                whoPublishedIt  : "Diego",
-                                                date            : new Date(2016, 02, 14)
-                                            )
+        def publication3 = new Publication( text           : "Test-driven development",
+                                            idCategory     : category2.id,
+                                            name           : "TDD",
+                                            title          : "TDDIISoft",
+                                            whoPublishedIt : "Dario",
+                                            date           : new Date(2016, 02, 14)
+                                          )
 
         category1.publications = [publication1]
         category2.publications = [publication2, publication3]
-//        category1.save()
-//        category2.save()
         publication1.save()
         publication2.save()
         publication3.save()
 
-        Commentary commentaryForPub1        = new Commentary(   text            : "CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS",
+        Commentary commentaryForPub1        = new Commentary(   text            : "Is an opportunity for the Scrum Team to inspect itself",
                                                                 idPublication   : publication1.id,
-                                                                whoPublishedIt  : "Diego",
-                                                                date            : new Date(2013, 07, 22)
+                                                                whoPublishedIt  : "Marcos",
+                                                                date            : new Date(2013, 01, 21)
                                                             )
 
-        Commentary otherCommentaryForPub1   = new Commentary(   text            : "CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS",
+        Commentary otherCommentaryForPub1   = new Commentary(   text            : "Create a plan for improvements to be enacted during the next Sprint",
                                                                 idPublication   : publication1.id,
-                                                                whoPublishedIt  : "Diego",
-                                                                date            : new Date(2013, 07, 22)
+                                                                whoPublishedIt  : "Martin",
+                                                                date            : new Date(2013, 02, 18)
                                                             )
 
-        Commentary commentaryForPub2        = new Commentary(   text            : "CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS",
+        Commentary commentaryForPub2        = new Commentary(   text            : "Is a software development process that emerged from TDD",
                                                                 idPublication   : publication2.id,
-                                                                whoPublishedIt  : "Diego",
-                                                                date            : new Date(2013, 07, 22)
+                                                                whoPublishedIt  : "Ivan",
+                                                                date            : new Date(2013, 03, 22)
                                                             )
 
-        Commentary commentaryForPub3        = new Commentary(   text            : "CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS",
-                                                                idPublication   : publication3.id,
-                                                                whoPublishedIt  : "Diego",
-                                                                date            : new Date(2013, 07, 22)
+        Commentary commentaryForPub3        = new Commentary(   text            : "Is principally an idea about how software development should be managed by both business interests and technical insight",
+                                                                idPublication   : publication2.id,
+                                                                whoPublishedIt  : "Gabriel",
+                                                                date            : new Date(2013, 04, 23)
                                                             )
 
-        Commentary otherCommentaryForPub3   = new Commentary(   text            : "CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS",
+        Commentary otherCommentaryForPub3   = new Commentary(   text            : "Is a software development process",
                                                                 idPublication   : publication3.id,
-                                                                whoPublishedIt  : "Diego",
-                                                                date            : new Date(2013, 07, 22)
+                                                                whoPublishedIt  : "Nahuel",
+                                                                date            : new Date(2013, 05, 21)
                                                             )
 
-        Commentary anotherCommentaryForPub3 = new Commentary(   text            : "CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS",
+        Commentary anotherCommentaryForPub3 = new Commentary(   text            : "Is related to the test-first programming concepts of extreme programming",
                                                                 idPublication   : publication3.id,
-                                                                whoPublishedIt  : "Diego",
-                                                                date            : new Date(2013, 07, 22)
+                                                                whoPublishedIt  : "Victor",
+                                                                date            : new Date(2013, 06, 13)
                                                             )
 
         commentaryForPub1.save()

@@ -28,6 +28,10 @@ endpoints:
 
 ---
 grails:
+
+    cors:
+       enabled: true
+       allowedMethods: ['*']
     mime:
         disable:
             accept:

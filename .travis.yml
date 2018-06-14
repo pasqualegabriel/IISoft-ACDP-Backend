@@ -1,6 +1,7 @@
 language: groovy
 
-jdk: openjdk8
+jdk: 
+ - openjdk8
 
 before_install:
  - curl -s get.sdkman.io | bash

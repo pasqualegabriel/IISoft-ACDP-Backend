@@ -3,8 +3,22 @@ package iisoft.acdp.backend
 class BootStrap {
 
     def init = { servletContext ->
-        def pepita    = new User(name:"pepita")
+        def pepita = new User(name:"pepita", surname: "Swallow", userName: "PepitaUser",
+                password: "pepitaPassword", mail: "pepita@gmail.com", birthDate: new Date(2018, 06, 22))
+        def ivan = new User(name:"Ivan", surname: "D", userName: "ivanUser",
+                password: "password", mail: "ivan@gmail.com", birthDate: new Date(2018, 06, 22))
+        def nahu = new User(name:"Nahu", surname: "A", userName: "nahuUser",
+                password: "password", mail: "nahu@gmail.com", birthDate: new Date(2018, 06, 22))
+        def gabi = new User(name:"Gabi", surname: "P", userName: "gabiUser",
+                password: "password", mail: "gabi@gmail.com", birthDate: new Date(2018, 06, 22))
+        def victor = new User(name:"Victor", surname: "D", userName: "victorUser",
+                password: "password", mail: "victor@gmail.com", birthDate: new Date(2018, 06, 22))
+
         pepita.save()
+        ivan.save()
+        nahu.save()
+        gabi.save()
+        victor.save()
 
         def category1 = new Category(name:"IISoftware" )
         def category2 = new Category(name:"Intro")

@@ -12,6 +12,9 @@ class UrlMappings {
         "/"(controller: 'application', action:'index')
 
         get    "/user"                          (controller:"user", action:"userPepita")
+        get    "/users"                         (controller:"user", action:"allUsers")
+        get    "/user/$userName"                (controller:"user", action:"getUserByUserName")
+        post   "/user"                          (controller:"user", action:"saveUser")
 
         get    "/categories"                    (controller:"category", action:"allCategories")
 
@@ -19,8 +22,8 @@ class UrlMappings {
         get    "/publication/$idCat"            (controller:"publication", action:"publications")
         post   "/publication"                   (controller:"publication", action:"savePublication")
 
-        get    "/comments/$idPub"             (controller:"commentary",   action:"getCommentsOfPublication")
-        post   "/commentary"                     (controller:"commentary",   action:"saveCommentary")
+        get    "/comments/$idPub"               (controller:"commentary",   action:"getCommentsOfPublication")
+        post   "/commentary"                    (controller:"commentary",   action:"saveCommentary")
 
         "500"(view: '/error')
         "404"(view: '/notFound')

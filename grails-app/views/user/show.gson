@@ -1,0 +1,7 @@
+import iisoft.acdp.backend.User
+
+model {
+    User anUser
+}
+
+json tmpl.mini(anUser)

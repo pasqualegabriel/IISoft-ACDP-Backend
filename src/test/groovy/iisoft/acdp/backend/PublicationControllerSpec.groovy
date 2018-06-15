@@ -29,7 +29,6 @@ class PublicationControllerSpec extends HibernateSpec implements ControllerUnitT
 
     void "when the controller is requested for all publications, it returns all Publications"() {
         given:
-
             def categories = aPublications.collect {
                 def publication = it
                 def jsonBuilder = aJsonBuilder
@@ -53,77 +52,75 @@ class PublicationControllerSpec extends HibernateSpec implements ControllerUnitT
 
     void "when the controller is requested for the publications of a category it returns all its publications"() {
         given:
+            Publication aNewPublication        = new Publication(text:"CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS" ,idCategory: 5,name: "Retrospectivepepe",
+                                                  title: "RetrospectiveIISoftdepepe",
+                                                  whoPublishedIt: "Diego",
+                                                  date: new Date(2013, 07, 22))
 
-        Publication aNewPublication        = new Publication(text:"CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS" ,idCategory: 5,name: "Retrospectivepepe",
-                                              title: "RetrospectiveIISoftdepepe",
-                                              whoPublishedIt: "Diego",
-                                              date: new Date(2013, 07, 22))
+            aNewPublication.save()
 
-        aNewPublication.save()
-
-        Publication aNotherPublication     = new Publication(text:"CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS", idCategory: 5, name: "Retrospectivepepin",
-                                              title: "RetrospectiveIISoftdepepin",
-                                              whoPublishedIt: "Diego",
-                                              date: new Date(2015, 06, 22))
-        aNotherPublication.save()
+            Publication aNotherPublication     = new Publication(text:"CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS", idCategory: 5, name: "Retrospectivepepin",
+                                                  title: "RetrospectiveIISoftdepepin",
+                                                  whoPublishedIt: "Diego",
+                                                  date: new Date(2015, 06, 22))
+            aNotherPublication.save()
 
 
-        aPublications       = [aNewPublication,aNotherPublication]
+            aPublications       = [aNewPublication,aNotherPublication]
 
-        def thePublications = aPublications.collect {
-            def publication = it
-            def jsonBuilder = aJsonBuilder
-            jsonBuilder {
-                id             publication.id
-                title          publication.title
-                date           publication.date
-                idCategory     publication.idCategory
-                whoPublishedIt publication.whoPublishedIt
-                text           publication.text
-            }
-        } as JSON
+            def thePublications = aPublications.collect {
+                def publication = it
+                def jsonBuilder = aJsonBuilder
+                jsonBuilder {
+                    id             publication.id
+                    title          publication.title
+                    date           publication.date
+                    idCategory     publication.idCategory
+                    whoPublishedIt publication.whoPublishedIt
+                    text           publication.text
+                }
+            } as JSON
 
-        params.idCat = 5
+            params.idCat = 5
 
         when:
-        controller.publications()
+            controller.publications()
 
         then:
-        assertEquals(200, response.status)
-        assertEquals(thePublications.toString(), response.contentAsString)
+            assertEquals(200, response.status)
+            assertEquals(thePublications.toString(), response.contentAsString)
     }
 
     void "when the controller is requested for the publications of a category and the category has no publications, it returns 404"() {
         given:
-
-        params.idCat = 5
+            params.idCat = 5
 
         when:
-        controller.publications()
+            controller.publications()
 
         then:
-        assertEquals(404, response.status)
+            assertEquals(404, response.status)
     }
 
     void "when requested to save a publication, it is saved"() {
         given:
-        def aNewPublicationJson = aJsonBuilder {
-            title           "un titulo x"
-            text            "un texto x"
-            idCategory      32
-            date            new Date(2015, 06, 22)
-            whoPublishedIt "un Nombre x"
+            def aNewPublicationJson = aJsonBuilder {
+                title           "un titulo x"
+                text            "un texto x"
+                idCategory      32
+                date            new Date(2015, 06, 22)
+                whoPublishedIt "un Nombre x"
 
-        } as JSON
+            } as JSON
 
-        request.setMethod("POST")
-        request.setJSON(aNewPublicationJson)
+            request.setMethod("POST")
+            request.setJSON(aNewPublicationJson)
 
         when:
-        controller.savePublication()
+            controller.savePublication()
 
         then:
-        assertEquals(200, response.status)
-        assertNotNull(Publication.findByTitle("un titulo x"))
+            assertEquals(200, response.status)
+            assertNotNull(Publication.findByTitle("un titulo x"))
     }
 }

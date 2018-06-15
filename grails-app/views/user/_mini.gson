@@ -1,0 +1,15 @@
+import iisoft.acdp.backend.User
+
+model {
+    User user
+}
+
+json {
+    id        user.id
+    name      user.name
+    surname   user.surname
+    userName  user.userName
+    mail      user.mail
+    birthDate user.birthDate
+}
+

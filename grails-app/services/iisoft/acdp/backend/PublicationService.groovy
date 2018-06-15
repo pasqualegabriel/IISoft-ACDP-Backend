@@ -6,8 +6,7 @@ import grails.gorm.transactions.Transactional
 class PublicationService {
 
     def allPublications() {
-        //Publication.findAll()
-        Publication.executeQuery("from Publication")
+        Publication.findAll()
     }
 
     def getPublicationsOfCategory(long idOfCategory) {

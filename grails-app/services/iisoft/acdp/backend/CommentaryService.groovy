@@ -9,7 +9,7 @@ class CommentaryService {
         Commentary.findAllByIdPublication(idPublication)
     }
 
-    def save (Commentary aCommentary){
+    def save(Commentary aCommentary){
         aCommentary.save()
     }
 }

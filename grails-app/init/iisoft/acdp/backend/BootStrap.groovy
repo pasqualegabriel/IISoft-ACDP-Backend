@@ -3,22 +3,28 @@ package iisoft.acdp.backend
 class BootStrap {
 
     def init = { servletContext ->
-        def pepita = new User(name:"pepita", surname: "Swallow", userName: "PepitaUser",
+        def pepita = new User(name:"pepita", surname: "Swallow", userName: "pepita",
                 password: "pepitaPassword", mail: "pepita@gmail.com", birthDate: new Date(2018, 06, 22))
-        def ivan = new User(name:"Ivan", surname: "D", userName: "ivanUser",
+        def ivan = new User(name:"Ivan", surname: "D", userName: "ivan",
                 password: "password", mail: "ivan@gmail.com", birthDate: new Date(2018, 06, 22))
-        def nahu = new User(name:"Nahu", surname: "A", userName: "nahuUser",
+        def nahu = new User(name:"Nahu", surname: "A", userName: "nahu",
                 password: "password", mail: "nahu@gmail.com", birthDate: new Date(2018, 06, 22))
-        def gabi = new User(name:"Gabi", surname: "P", userName: "gabiUser",
+        def gabi = new User(name:"Gabi", surname: "P", userName: "gabi",
                 password: "password", mail: "gabi@gmail.com", birthDate: new Date(2018, 06, 22))
-        def victor = new User(name:"Victor", surname: "D", userName: "victorUser",
+        def victor = new User(name:"Victor", surname: "D", userName: "victor",
                 password: "password", mail: "victor@gmail.com", birthDate: new Date(2018, 06, 22))
+        def diego = new User(name:"Diego", surname: "Diego", userName: "diego",
+                password: "password", mail: "diego@gmail.com", birthDate: new Date(2018, 06, 22))
+        def pablo = new User(name:"Pablo", surname: "Suarez", userName: "pablo",
+                password: "password", mail: "pablo@gmail.com", birthDate: new Date(2018, 06, 22))
 
         pepita.save()
         ivan.save()
         nahu.save()
         gabi.save()
         victor.save()
+        diego.save()
+        pablo.save()
 
         def category1 = new Category(name:"IISoftware" )
         def category2 = new Category(name:"Intro")
@@ -29,7 +35,7 @@ class BootStrap {
                                             idCategory     : category1.id,
                                             name           : "Retrospective",
                                             title          : "RetrospectiveIISoft",
-                                            whoPublishedIt : "Diego",
+                                            whoPublishedIt : diego.userName,
                                             date           : new Date(2018, 06, 22)
                                           )
 
@@ -37,7 +43,7 @@ class BootStrap {
                                             idCategory     : category2.id,
                                             name           : "BDD",
                                             title          : "BDDIISoft",
-                                            whoPublishedIt : "Pablo",
+                                            whoPublishedIt : pablo.userName,
                                             date           : new Date(2017, 05, 10)
                                           )
 
@@ -45,7 +51,7 @@ class BootStrap {
                                             idCategory     : category2.id,
                                             name           : "TDD",
                                             title          : "TDDIISoft",
-                                            whoPublishedIt : "Dario",
+                                            whoPublishedIt : ivan.userName,
                                             date           : new Date(2016, 02, 14)
                                           )
 
@@ -57,37 +63,37 @@ class BootStrap {
 
         Commentary commentaryForPub1        = new Commentary(   text            : "Is an opportunity for the Scrum Team to inspect itself",
                                                                 idPublication   : publication1.id,
-                                                                whoPublishedIt  : "Marcos",
+                                                                whoPublishedIt  : gabi.userName,
                                                                 date            : new Date(2013, 01, 21)
                                                             )
 
         Commentary otherCommentaryForPub1   = new Commentary(   text            : "Create a plan for improvements to be enacted during the next Sprint",
                                                                 idPublication   : publication1.id,
-                                                                whoPublishedIt  : "Martin",
+                                                                whoPublishedIt  : nahu.userName,
                                                                 date            : new Date(2013, 02, 18)
                                                             )
 
         Commentary commentaryForPub2        = new Commentary(   text            : "Is a software development process that emerged from TDD",
                                                                 idPublication   : publication2.id,
-                                                                whoPublishedIt  : "Ivan",
+                                                                whoPublishedIt  : victor.userName,
                                                                 date            : new Date(2013, 03, 22)
                                                             )
 
         Commentary commentaryForPub3        = new Commentary(   text            : "Is principally an idea about how software development should be managed by both business interests and technical insight",
                                                                 idPublication   : publication2.id,
-                                                                whoPublishedIt  : "Gabriel",
+                                                                whoPublishedIt  : victor.userName,
                                                                 date            : new Date(2013, 04, 23)
                                                             )
 
         Commentary otherCommentaryForPub3   = new Commentary(   text            : "Is a software development process",
                                                                 idPublication   : publication3.id,
-                                                                whoPublishedIt  : "Nahuel",
+                                                                whoPublishedIt  : nahu.userName,
                                                                 date            : new Date(2013, 05, 21)
                                                             )
 
         Commentary anotherCommentaryForPub3 = new Commentary(   text            : "Is related to the test-first programming concepts of extreme programming",
                                                                 idPublication   : publication3.id,
-                                                                whoPublishedIt  : "Victor",
+                                                                whoPublishedIt  : ivan.userName,
                                                                 date            : new Date(2013, 06, 13)
                                                             )
 

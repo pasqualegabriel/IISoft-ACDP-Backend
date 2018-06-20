@@ -38,6 +38,7 @@ class BootStrap {
                                             whoPublishedIt : diego.userName,
                                             date           : new Date(2018, 06, 22)
                                           )
+        publication1.subscribe(ivan.userName)
 
         def publication2 = new Publication( text           : "Behavior-Driven Development",
                                             idCategory     : category2.id,
@@ -46,6 +47,9 @@ class BootStrap {
                                             whoPublishedIt : pablo.userName,
                                             date           : new Date(2017, 05, 10)
                                           )
+        publication2.subscribe(nahu.userName)
+        publication2.subscribe(gabi.userName)
+        publication2.subscribe(victor.userName)
 
         def publication3 = new Publication( text           : "Test-driven development",
                                             idCategory     : category2.id,
@@ -54,6 +58,9 @@ class BootStrap {
                                             whoPublishedIt : ivan.userName,
                                             date           : new Date(2016, 02, 14)
                                           )
+
+        publication3.subscribe(diego.userName)
+        publication3.subscribe(pablo.userName)
 
         category1.publications = [publication1]
         category2.publications = [publication2, publication3]

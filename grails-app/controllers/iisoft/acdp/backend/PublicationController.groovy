@@ -1,5 +1,6 @@
 package iisoft.acdp.backend
 
+import grails.gorm.transactions.Transactional
 import grails.rest.*
 import grails.converters.*
 
@@ -31,6 +32,13 @@ class PublicationController extends RestfulController<Publication> {
 
     //post    "/publication"
     def savePublication(Publication aPublication){
+        publicationService.save(aPublication)
+    }
+
+    //put   "/publication/subscriber/$userName"
+    @Transactional
+    def updatePublication(Publication aPublication) {
+        publicationService.subscribe(aPublication, params.userName as String)
         publicationService.save(aPublication)
     }
 

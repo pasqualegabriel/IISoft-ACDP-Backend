@@ -11,5 +11,7 @@ json {
     whoPublishedIt  publication.whoPublishedIt
     text            publication.text
     date            publication.date
+    cantSubscribers publication.cantSubscribers
+    subscribers     tmpl.string(publication.subscribers)
 }
 

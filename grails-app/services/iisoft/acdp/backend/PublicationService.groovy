@@ -6,14 +6,26 @@ import grails.gorm.transactions.Transactional
 class PublicationService {
 
     def allPublications() {
-        Publication.findAll()
+        Publication.executeQuery("from Publication order by cantSubscribers desc")
     }
 
     def getPublicationsOfCategory(long idOfCategory) {
-        Publication.findAllByIdCategory(idOfCategory)
+        Publication.executeQuery("from Publication where idCategory = ? order by cantSubscribers desc",
+        [idOfCategory])
+//        Publication.findAllByIdCategory(idOfCategory)
     }
 
     def save(Publication aPublication) {
         aPublication.save()
+    }
+
+    def subscribe(Publication aPublication, String anUserName) {
+        if(aPublication.isSubscribed(anUserName)){
+            aPublication.unsubscribe(anUserName)
+        }
+        else {
+            aPublication.subscribe(anUserName)
+        }
+
     }
 }

@@ -33,12 +33,15 @@ class PublicationControllerSpec extends HibernateSpec implements ControllerUnitT
                 def publication = it
                 def jsonBuilder = aJsonBuilder
                 jsonBuilder {
-                    id             1
-                    title          publication.title
-                    date           publication.date
-                    idCategory     publication.idCategory
-                    whoPublishedIt publication.whoPublishedIt
-                    text           publication.text
+                    id              1
+                    title           publication.title
+                    date            publication.date
+                    idCategory      publication.idCategory
+                    subscribers     publication.subscribers
+                    whoPublishedIt  publication.whoPublishedIt
+                    text            publication.text
+                    cantSubscribers publication.cantSubscribers
+
                 }
             } as JSON
 
@@ -72,12 +75,14 @@ class PublicationControllerSpec extends HibernateSpec implements ControllerUnitT
                 def publication = it
                 def jsonBuilder = aJsonBuilder
                 jsonBuilder {
-                    id             publication.id
-                    title          publication.title
-                    date           publication.date
-                    idCategory     publication.idCategory
-                    whoPublishedIt publication.whoPublishedIt
-                    text           publication.text
+                    id              publication.id
+                    title           publication.title
+                    date            publication.date
+                    idCategory      publication.idCategory
+                    subscribers     publication.subscribers
+                    whoPublishedIt  publication.whoPublishedIt
+                    text            publication.text
+                    cantSubscribers publication.cantSubscribers
                 }
             } as JSON
 

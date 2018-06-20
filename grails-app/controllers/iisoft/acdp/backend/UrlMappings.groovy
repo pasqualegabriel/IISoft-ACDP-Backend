@@ -11,7 +11,6 @@ class UrlMappings {
         patch "/$controller/$id(.$format)?"(action:"patch")
         "/"(controller: 'application', action:'index')
 
-        get    "/user"                             (controller:"user", action:"userPepita")
         get    "/users"                            (controller:"user", action:"allUsers")
         get    "/user/$userName"                   (controller:"user", action:"getUserByUserName")
         post   "/user"                             (controller:"user", action:"saveUser")

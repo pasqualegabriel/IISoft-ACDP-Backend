@@ -26,11 +26,6 @@ class UserController extends RestfulController<User> {
         }
     }
 
-    //     get    "/user"         (controller:"user", action:"userPepita")
-    def userPepita(){
-        respond  userService.getPepita()
-    }
-
     // get    "/users"
     def allUsers() {
         respond  userService.allUsers()

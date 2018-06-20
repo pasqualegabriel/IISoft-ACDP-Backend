@@ -24,27 +24,6 @@ class UserControllerSpec extends HibernateSpec implements ControllerUnitTest<Use
         controller.userService = anUserService
     }
 
-    void "when the controller is requested for a user, it returns pepita"() {
-        given:
-            def pepitaJson = aJsonBuilder {
-                id        pepita.id
-                name      pepita.name
-                password  pepita.password
-                userName  pepita.userName
-                mail      pepita.mail
-                birthDate pepita.birthDate
-                surname   pepita.surname
-            } as JSON
-
-        when:
-            controller.userPepita()
-
-        then:
-            assertEquals(200, response.status)
-            assertEquals(pepitaJson.toString(), response.contentAsString)
-    }
-
-
     void "when the controller is requested for all users, it returns all users"() {
         given:
             def someUsers = users.collect {
@@ -127,4 +106,5 @@ class UserControllerSpec extends HibernateSpec implements ControllerUnitTest<Use
             assertEquals(200, response.status)
             assertNotNull(User.findByUserName(pepita.userName))
     }
+
 }

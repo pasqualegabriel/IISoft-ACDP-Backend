@@ -38,8 +38,15 @@ class PublicationController extends RestfulController<Publication> {
     //put   "/publication/subscriber/$userName"
     @Transactional
     def updatePublication(Publication aPublication) {
-        publicationService.subscribe(aPublication, params.userName as String)
-        publicationService.save(aPublication)
+        def userService = new UserService()
+        def anUserName  = params.userName as String
+        if(userService.getUserByUserName(anUserName) == null){
+            render status: 404
+        } else {
+            publicationService.subscribe(aPublication, anUserName)
+            publicationService.save(aPublication)
+            render status: 200
+        }
     }
 
 

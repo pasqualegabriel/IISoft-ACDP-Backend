@@ -17,6 +17,8 @@ class BootStrap {
                 password: "password", mail: "diego@gmail.com", birthDate: new Date(2018, 06, 22))
         def pablo = new User(name:"Pablo", surname: "Suarez", userName: "pablo",
                 password: "password", mail: "pablo@gmail.com", birthDate: new Date(2018, 06, 22))
+        def cami = new User(name:"Cami", surname: "Cintioli", userName: "cami",
+                password: "password", mail: "cami@gmail.com", birthDate: new Date(2018, 06, 22))
 
         pepita.save()
         ivan.save()
@@ -25,6 +27,7 @@ class BootStrap {
         victor.save()
         diego.save()
         pablo.save()
+        cami.save()
 
         def category1 = new Category(name:"IISoftware" )
         def category2 = new Category(name:"Intro")

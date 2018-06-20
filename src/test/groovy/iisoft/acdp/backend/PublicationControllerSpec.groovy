@@ -128,4 +128,61 @@ class PublicationControllerSpec extends HibernateSpec implements ControllerUnitT
             assertEquals(200, response.status)
             assertNotNull(Publication.findByTitle("un titulo x"))
     }
+
+    def 'given an userName and a Json request, updatePublication changes the state of aPublication in the Data Base'() {
+        given:
+        User anUser = new User(name:"pepita", surname: "Swallow", userName: "pepita",
+                password: "pepitaPassword", mail: "pepita@gmail.com", birthDate: new Date(2018, 06, 22))
+
+        anUser.save()
+        params.userName = "pepita"
+
+        def aPublicationModified =  aJsonBuilder {
+            id              aPublication.id
+            title           aPublication.title
+            date            aPublication.date
+            idCategory      aPublication.idCategory
+            subscribers     aPublication.subscribers
+            whoPublishedIt  aPublication.whoPublishedIt
+            text            aPublication.text
+            cantSubscribers aPublication.cantSubscribers
+        } as JSON
+
+        request.setJSON(aPublicationModified)
+        request.setMethod("PUT")
+
+        when:
+        controller.updatePublication(aPublication)
+
+        then:
+        response.status == 200
+        Publication.findById(aPublication.id).cantSubscribers == 1
+        Publication.findById(aPublication.id).subscribers     == ["pepita"]
+    }
+
+    def 'Dado un id invalido en los parametros, la accion update devuelve error'() {
+        given:
+        params.userName = "none"
+
+        def aPublicationModified =  aJsonBuilder {
+            id              aPublication.id
+            title           aPublication.title
+            date            aPublication.date
+            idCategory      aPublication.idCategory
+            subscribers     aPublication.subscribers
+            whoPublishedIt  aPublication.whoPublishedIt
+            text            aPublication.text
+            cantSubscribers aPublication.cantSubscribers
+        } as JSON
+
+        request.setJSON(aPublicationModified)
+        request.setMethod("PUT")
+
+        when:
+        controller.updatePublication(aPublication)
+
+        then:
+        response.status == 404
+
+    }
 }

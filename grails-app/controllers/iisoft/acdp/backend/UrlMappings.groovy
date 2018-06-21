@@ -14,6 +14,7 @@ class UrlMappings {
         get    "/users"                            (controller:"user", action:"allUsers")
         get    "/user/$userName"                   (controller:"user", action:"getUserByUserName")
         post   "/user"                             (controller:"user", action:"saveUser")
+        post   "/newUser"                          (controller:"user", action:"newUser")
 
         get    "/categories"                       (controller:"category", action:"allCategories")
 

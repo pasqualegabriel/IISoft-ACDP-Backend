@@ -2,7 +2,7 @@ package gradle.cucumber
 
 import cucumber.api.groovy.EN
 import cucumber.api.groovy.Hooks
-import iisoft.acdp.backend.User
+import iisoft.acdp.backend.UserProfile
 
 import static org.junit.Assert.*
 
@@ -12,7 +12,7 @@ this.metaClass.mixin(EN)
 def aUser
 
 Given(~/^An User$/) { ->
-    aUser = new User()
+    aUser = new UserProfile()
 }
 
 When(~/^Pepita name$/) { ->

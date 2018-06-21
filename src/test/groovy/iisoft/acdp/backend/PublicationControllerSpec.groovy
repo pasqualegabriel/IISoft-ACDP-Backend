@@ -131,7 +131,7 @@ class PublicationControllerSpec extends HibernateSpec implements ControllerUnitT
 
     def 'given an userName and a Json request, updatePublication changes the state of aPublication in the Data Base'() {
         given:
-        User anUser = new User(name:"pepita", surname: "Swallow", userName: "pepita",
+        UserProfile anUser = new UserProfile(name:"pepita", surname: "Swallow", userName: "pepita",
                 password: "pepitaPassword", mail: "pepita@gmail.com", birthDate: new Date(2018, 06, 22))
 
         anUser.save()

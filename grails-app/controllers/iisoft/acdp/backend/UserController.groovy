@@ -1,39 +1,28 @@
 package iisoft.acdp.backend
 
+import grails.gorm.transactions.Transactional
+import iisoft.acdp.backend.authentication.NormalUser
 import grails.rest.*
-import grails.converters.*
 
-class UserController extends RestfulController<User> {
+class UserController extends RestfulController<UserProfile> {
 
     def userService
+    def springSecurityService
 
 	static responseFormats = ['json']
 
     UserController() {
-        super(User)
-    }
-
-    def index(){
-        respond ( [usersToRender: userService.allUsers()], view:'index' )
-    }
-
-    def show(User user) {
-        if (user == null) {
-            render status: 404
-        }
-        else {
-            respond ([anUser: user], view:'show')
-        }
+        super(UserProfile)
     }
 
     // get    "/users"
     def allUsers() {
-        respond  userService.allUsers()
+        respond userService.allUsers()
     }
 
     //get    "/user/$userName"
     def getUserByUserName(){
-        def user = userService.getUserByUserName(params.userName as String)
+        UserProfile user = userService.getUserByUserName(params.userName as String)
         if (user == null) {
             render status: 404
         }
@@ -43,8 +32,28 @@ class UserController extends RestfulController<User> {
     }
 
     //post    "/user"
-    def saveUser(User anUser){
-        userService.save(anUser)
+    def saveUser(UserProfile anUser){
+        if(leCorrespondeElProfile(anUser)){
+            userService.saveProfile(anUser)
+        }
+        else{
+            render status: 403
+        }
+    }
+
+    boolean leCorrespondeElProfile(UserProfile anUser) {
+        NormalUser currentUser = springSecurityService.currentUser
+        anUser.userID == currentUser.id
+    }
+
+    //post    "/newUser"
+    @Transactional
+    def newUser(UserRegisterForm anUserUserForm){
+        NormalUser hidratatedUser = anUserUserForm.hidrateUser()
+        userService.newUser(hidratatedUser)
+
+        UserProfile hidratedProfile   = anUserUserForm.hidrateprofile(hidratatedUser.id)
+        userService.saveProfile(hidratedProfile)
     }
 
 }

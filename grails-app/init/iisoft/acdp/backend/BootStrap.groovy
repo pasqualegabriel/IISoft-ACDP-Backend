@@ -1,33 +1,49 @@
 package iisoft.acdp.backend
 
+import iisoft.acdp.backend.authentication.NormalUser
+import iisoft.acdp.backend.authentication.Role
+import iisoft.acdp.backend.authentication.NormalUserRole
+
 class BootStrap {
 
     def init = { servletContext ->
-        def pepita = new User(name:"pepita", surname: "Swallow", userName: "pepita",
-                password: "pepitaPassword", mail: "pepita@gmail.com", birthDate: new Date(2018, 06, 22))
-        def ivan = new User(name:"Ivan", surname: "D", userName: "ivan",
-                password: "password", mail: "ivan@gmail.com", birthDate: new Date(2018, 06, 22))
-        def nahu = new User(name:"Nahu", surname: "A", userName: "nahu",
-                password: "password", mail: "nahu@gmail.com", birthDate: new Date(2018, 06, 22))
-        def gabi = new User(name:"Gabi", surname: "P", userName: "gabi",
-                password: "password", mail: "gabi@gmail.com", birthDate: new Date(2018, 06, 22))
-        def victor = new User(name:"Victor", surname: "D", userName: "victor",
-                password: "password", mail: "victor@gmail.com", birthDate: new Date(2018, 06, 22))
-        def diego = new User(name:"Diego", surname: "Diego", userName: "diego",
-                password: "password", mail: "diego@gmail.com", birthDate: new Date(2018, 06, 22))
-        def pablo = new User(name:"Pablo", surname: "Suarez", userName: "pablo",
-                password: "password", mail: "pablo@gmail.com", birthDate: new Date(2018, 06, 22))
-        def cami = new User(name:"Cami", surname: "Cintioli", userName: "cami",
-                password: "password", mail: "cami@gmail.com", birthDate: new Date(2018, 06, 22))
 
-        pepita.save()
-        ivan.save()
-        nahu.save()
-        gabi.save()
-        victor.save()
-        diego.save()
-        pablo.save()
-        cami.save()
+        // Salvamos en la base de datos un nuevo rol y un Actor
+        def userRole     = new Role(authority:'ROLE_NORMAL_USER').save()
+
+        def pepitaUser   = new NormalUser(username:'pepita',password: 'vuela').save()
+        def ivanUser     = new NormalUser(username:'ivan',password: 'password').save()
+        def nahuUser     = new NormalUser(username:'nahu',password: 'password').save()
+        def gabiUser     = new NormalUser(username:'gabi',password: 'password').save()
+        def victorUser   = new NormalUser(username:'victor',password: 'password').save()
+        def diegoUser    = new NormalUser(username:'diego',password: 'password').save()
+        def pabloUser    = new NormalUser(username:'pablo',password: 'password').save()
+        def camiUser     = new NormalUser(username:'cami',password: 'password').save()
+
+        NormalUserRole.create(pepitaUser , userRole)
+        NormalUserRole.create(ivanUser   , userRole)
+        NormalUserRole.create(nahuUser   , userRole)
+        NormalUserRole.create(gabiUser   , userRole)
+        NormalUserRole.create(victorUser , userRole)
+        NormalUserRole.create(diegoUser  , userRole)
+        NormalUserRole.create(pabloUser  , userRole)
+        NormalUserRole.create(camiUser   , userRole)
+
+        NormalUserRole.withSession {
+            it.flush()
+            it.clear()
+        }
+
+        def pepitaProfile = new UserProfile(userName:"pepita",name:"pepita", surname: "Swallow", mail: "pepita@gmail.com", birthDate: new Date(2018, 06, 22),userID: pepitaUser.getId() ).save()
+        def ivanProfile = new UserProfile(userName:"ivan",name:"Ivan", surname: "D", mail: "ivan@gmail.com", birthDate: new Date(2018, 06, 22), userID: ivanUser.getId()).save()
+        def nahuProfile = new UserProfile(userName:"nahu",name:"Nahu", surname: "A", mail: "nahu@gmail.com", birthDate: new Date(2018, 06, 22), userID: nahuUser.getId()).save()
+        def gabiProfile = new UserProfile(userName:"gabi",name:"Gabi", surname: "P", mail: "gabi@gmail.com", birthDate: new Date(2018, 06, 22), userID:  gabiUser.getId()).save()
+        def victorProfile = new UserProfile(userName:"victor",name:"Victor", surname: "D", mail: "victor@gmail.com", birthDate: new Date(2018, 06, 22), userID: victorUser.getId()).save()
+        def diegoProfile = new UserProfile(userName:"diego",name:"Diego", surname: "Diego", mail: "diego@gmail.com", birthDate: new Date(2018, 06, 22), userID: diegoUser.getId()).save()
+        def pabloProfile = new UserProfile(userName:"pablo",name:"Pablo", surname: "Suarez", mail: "pablo@gmail.com", birthDate: new Date(2018, 06, 22), userID: pabloUser.getId()).save()
+        def camiProfile = new UserProfile(userName:"cami",name:"Cami", surname: "Cintioli", mail: "cami@gmail.com", birthDate: new Date(2018, 06, 22), userID: camiUser.getId()).save()
+
+
 
         def category1 = new Category(name:"IISoftware" )
         def category2 = new Category(name:"Intro")
@@ -38,32 +54,32 @@ class BootStrap {
                                             idCategory     : category1.id,
                                             name           : "Retrospective",
                                             title          : "RetrospectiveIISoft",
-                                            whoPublishedIt : diego.userName,
+                                            whoPublishedIt : diegoUser.username,
                                             date           : new Date(2018, 06, 22)
                                           )
-        publication1.subscribe(ivan.userName)
+        publication1.subscribe(ivanUser.username)
 
         def publication2 = new Publication( text           : "Behavior-Driven Development",
                                             idCategory     : category2.id,
                                             name           : "BDD",
                                             title          : "BDDIISoft",
-                                            whoPublishedIt : pablo.userName,
+                                            whoPublishedIt : pabloUser.username,
                                             date           : new Date(2017, 05, 10)
                                           )
-        publication2.subscribe(nahu.userName)
-        publication2.subscribe(gabi.userName)
-        publication2.subscribe(victor.userName)
+        publication2.subscribe(nahuUser.username)
+        publication2.subscribe(gabiUser.username)
+        publication2.subscribe(victorUser.username)
 
         def publication3 = new Publication( text           : "Test-driven development",
                                             idCategory     : category2.id,
                                             name           : "TDD",
                                             title          : "TDDIISoft",
-                                            whoPublishedIt : ivan.userName,
+                                            whoPublishedIt : ivanUser.username,
                                             date           : new Date(2016, 02, 14)
                                           )
 
-        publication3.subscribe(diego.userName)
-        publication3.subscribe(pablo.userName)
+        publication3.subscribe(diegoUser.username)
+        publication3.subscribe(pabloUser.username)
 
         category1.publications = [publication1]
         category2.publications = [publication2, publication3]
@@ -73,37 +89,37 @@ class BootStrap {
 
         Commentary commentaryForPub1        = new Commentary(   text            : "Is an opportunity for the Scrum Team to inspect itself",
                                                                 idPublication   : publication1.id,
-                                                                whoPublishedIt  : gabi.userName,
+                                                                whoPublishedIt  : gabiUser.username,
                                                                 date            : new Date(2013, 01, 21)
                                                             )
 
         Commentary otherCommentaryForPub1   = new Commentary(   text            : "Create a plan for improvements to be enacted during the next Sprint",
                                                                 idPublication   : publication1.id,
-                                                                whoPublishedIt  : nahu.userName,
+                                                                whoPublishedIt  : nahuUser.username,
                                                                 date            : new Date(2013, 02, 18)
                                                             )
 
         Commentary commentaryForPub2        = new Commentary(   text            : "Is a software development process that emerged from TDD",
                                                                 idPublication   : publication2.id,
-                                                                whoPublishedIt  : victor.userName,
+                                                                whoPublishedIt  : victorUser.username,
                                                                 date            : new Date(2013, 03, 22)
                                                             )
 
         Commentary commentaryForPub3        = new Commentary(   text            : "Is principally an idea about how software development should be managed by both business interests and technical insight",
                                                                 idPublication   : publication2.id,
-                                                                whoPublishedIt  : victor.userName,
+                                                                whoPublishedIt  : victorUser.username,
                                                                 date            : new Date(2013, 04, 23)
                                                             )
 
         Commentary otherCommentaryForPub3   = new Commentary(   text            : "Is a software development process",
                                                                 idPublication   : publication3.id,
-                                                                whoPublishedIt  : nahu.userName,
+                                                                whoPublishedIt  : nahuUser.username,
                                                                 date            : new Date(2013, 05, 21)
                                                             )
 
         Commentary anotherCommentaryForPub3 = new Commentary(   text            : "Is related to the test-first programming concepts of extreme programming",
                                                                 idPublication   : publication3.id,
-                                                                whoPublishedIt  : ivan.userName,
+                                                                whoPublishedIt  : ivanUser.username,
                                                                 date            : new Date(2013, 06, 13)
                                                             )
 
@@ -115,6 +131,11 @@ class BootStrap {
         commentaryForPub3.save()
         otherCommentaryForPub3.save()
         anotherCommentaryForPub3.save()
+
+
+
+
+
     }
 
     def destroy = {

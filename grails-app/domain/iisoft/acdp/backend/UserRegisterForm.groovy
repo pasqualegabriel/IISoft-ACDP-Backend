@@ -28,7 +28,7 @@ class UserRegisterForm {
     }
 
     NormalUser hidrateUser() {
-        NormalUser usuario = new NormalUser(password: this.password,username: this.userName, id: this.id)
+        NormalUser usuario = new NormalUser(password: this.password,username: this.userName)
         return usuario
     }
 

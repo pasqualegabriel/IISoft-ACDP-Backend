@@ -164,4 +164,6 @@ class UserControllerSpec extends HibernateSpec implements ControllerUnitTest<Use
         assertNotNull(UserProfile.findByUserName("gokuUser"))
     }
 
+
+
 }

@@ -11,7 +11,7 @@ class BootStrap {
         // Salvamos en la base de datos un nuevo rol y un Actor
         def userRole     = new Role(authority:'ROLE_NORMAL_USER').save()
 
-        def pepitaUser   = new NormalUser(username:'pepita',password: 'pepitaPassword').save()
+        def pepitaUser   = new NormalUser(username:'pepita',password: 'vuela').save()
         def ivanUser     = new NormalUser(username:'ivan',password: 'password').save()
         def nahuUser     = new NormalUser(username:'nahu',password: 'password').save()
         def gabiUser     = new NormalUser(username:'gabi',password: 'password').save()
@@ -19,16 +19,6 @@ class BootStrap {
         def diegoUser    = new NormalUser(username:'diego',password: 'password').save()
         def pabloUser    = new NormalUser(username:'pablo',password: 'password').save()
         def camiUser     = new NormalUser(username:'cami',password: 'password').save()
-
-
-        def pepitaProfile = new UserProfile(UserName:"pepita",name:"pepita", surname: "Swallow", mail: "pepita@gmail.com", birthDate: new Date(2018, 06, 22),userID: pepitaUser.getId() ).save()
-        def ivanProfile = new UserProfile(UserName:"ivan",name:"Ivan", surname: "D", mail: "ivan@gmail.com", birthDate: new Date(2018, 06, 22), userID: ivanUser.getId()).save()
-        def nahuProfile = new UserProfile(UserName:"nahu",name:"Nahu", surname: "A", mail: "nahu@gmail.com", birthDate: new Date(2018, 06, 22), userID: nahuUser.getId()).save()
-        def gabiProfile = new UserProfile(UserName:"gabi",name:"Gabi", surname: "P", mail: "gabi@gmail.com", birthDate: new Date(2018, 06, 22), userID:  gabiUser.getId()).save()
-        def victorProfile = new UserProfile(UserName:"victor",name:"Victor", surname: "D", mail: "victor@gmail.com", birthDate: new Date(2018, 06, 22), userID: victorUser.getId()).save()
-        def diegoProfile = new UserProfile(UserName:"diego",name:"Diego", surname: "Diego", mail: "diego@gmail.com", birthDate: new Date(2018, 06, 22), userID: diegoUser.getId()).save()
-        def pabloProfile = new UserProfile(UserName:"pablo",name:"Pablo", surname: "Suarez", mail: "pablo@gmail.com", birthDate: new Date(2018, 06, 22), userID: pabloUser.getId()).save()
-        def camiProfile = new UserProfile(UserName:"cami",name:"Cami", surname: "Cintioli", mail: "cami@gmail.com", birthDate: new Date(2018, 06, 22), userID: camiUser.getId()).save()
 
         NormalUserRole.create(pepitaUser , userRole)
         NormalUserRole.create(ivanUser   , userRole)
@@ -38,6 +28,22 @@ class BootStrap {
         NormalUserRole.create(diegoUser  , userRole)
         NormalUserRole.create(pabloUser  , userRole)
         NormalUserRole.create(camiUser   , userRole)
+
+        NormalUserRole.withSession {
+            it.flush()
+            it.clear()
+        }
+
+        def pepitaProfile = new UserProfile(userName:"pepita",name:"pepita", surname: "Swallow", mail: "pepita@gmail.com", birthDate: new Date(2018, 06, 22),userID: pepitaUser.getId() ).save()
+        def ivanProfile = new UserProfile(userName:"ivan",name:"Ivan", surname: "D", mail: "ivan@gmail.com", birthDate: new Date(2018, 06, 22), userID: ivanUser.getId()).save()
+        def nahuProfile = new UserProfile(userName:"nahu",name:"Nahu", surname: "A", mail: "nahu@gmail.com", birthDate: new Date(2018, 06, 22), userID: nahuUser.getId()).save()
+        def gabiProfile = new UserProfile(userName:"gabi",name:"Gabi", surname: "P", mail: "gabi@gmail.com", birthDate: new Date(2018, 06, 22), userID:  gabiUser.getId()).save()
+        def victorProfile = new UserProfile(userName:"victor",name:"Victor", surname: "D", mail: "victor@gmail.com", birthDate: new Date(2018, 06, 22), userID: victorUser.getId()).save()
+        def diegoProfile = new UserProfile(userName:"diego",name:"Diego", surname: "Diego", mail: "diego@gmail.com", birthDate: new Date(2018, 06, 22), userID: diegoUser.getId()).save()
+        def pabloProfile = new UserProfile(userName:"pablo",name:"Pablo", surname: "Suarez", mail: "pablo@gmail.com", birthDate: new Date(2018, 06, 22), userID: pabloUser.getId()).save()
+        def camiProfile = new UserProfile(userName:"cami",name:"Cami", surname: "Cintioli", mail: "cami@gmail.com", birthDate: new Date(2018, 06, 22), userID: camiUser.getId()).save()
+
+
 
         def category1 = new Category(name:"IISoftware" )
         def category2 = new Category(name:"Intro")
@@ -128,10 +134,7 @@ class BootStrap {
 
 
 
-        NormalUserRole.withSession {
-            it.flush()
-            it.clear()
-        }
+
 
     }
 

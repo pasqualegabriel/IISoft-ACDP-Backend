@@ -12,7 +12,6 @@ class PublicationService {
     def getPublicationsOfCategory(long idOfCategory) {
         Publication.executeQuery("from Publication where idCategory = ? order by cantSubscribers desc",
         [idOfCategory])
-//        Publication.findAllByIdCategory(idOfCategory)
     }
 
     def save(Publication aPublication) {
@@ -27,5 +26,9 @@ class PublicationService {
             aPublication.subscribe(anUserName)
         }
 
+    }
+
+    def searchByTitle(String search){
+        Publication.executeQuery("from Publication where title like '%" + search + "%' order by cantSubscribers desc")
     }
 }

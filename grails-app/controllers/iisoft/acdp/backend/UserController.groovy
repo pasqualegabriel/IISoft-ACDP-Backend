@@ -56,4 +56,15 @@ class UserController extends RestfulController<UserProfile> {
         userService.saveProfile(hidratedProfile)
     }
 
+    //get   "/user/mail/$mail"
+    def mail(){
+        UserProfile user = userService.getUserByMail(params.mail as String)
+        if (user == null) {
+            render status: 404
+        }
+        else {
+            respond user
+        }
+    }
+
 }

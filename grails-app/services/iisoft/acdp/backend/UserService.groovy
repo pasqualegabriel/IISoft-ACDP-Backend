@@ -16,7 +16,6 @@ class UserService {
         anUser.save()
         Role role = Role.findByAuthority('ROLE_NORMAL_USER')
         NormalUserRole.create(anUser, role,true)
-
     }
 
     def getUserByUserName(String anUserName) {
@@ -29,5 +28,9 @@ class UserService {
 
     def saveProfile(UserProfile userProfile) {
         userProfile.save()
+    }
+
+    def getUserByMail(String aMail) {
+        UserProfile.findByMail(aMail)
     }
 }

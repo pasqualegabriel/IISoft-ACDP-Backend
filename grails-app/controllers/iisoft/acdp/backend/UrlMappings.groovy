@@ -15,6 +15,7 @@ class UrlMappings {
         get    "/user/$userName"                   (controller:"user", action:"getUserByUserName")
         post   "/user"                             (controller:"user", action:"saveUser")
         post   "/newUser"                          (controller:"user", action:"newUser")
+        get   "/user/mail/$mail"                   (controller:"user", action:"mail")
 
         get    "/categories"                       (controller:"category", action:"allCategories")
 
@@ -22,6 +23,7 @@ class UrlMappings {
         get    "/publication/$idCat"               (controller:"publication", action:"publications")
         post   "/publication"                      (controller:"publication", action:"savePublication")
         put   "/publication/subscriber/$userName"  (controller:"publication", action:"updatePublication")
+        get   "/publication/title/$title"          (controller:"publication", action:"searchByTitle")
 
         get    "/comments/$idPub"                  (controller:"commentary",   action:"getCommentsOfPublication")
         post   "/commentary"                       (controller:"commentary",   action:"saveCommentary")

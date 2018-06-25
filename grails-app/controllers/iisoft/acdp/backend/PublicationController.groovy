@@ -49,5 +49,16 @@ class PublicationController extends RestfulController<Publication> {
         }
     }
 
+    //get    "/publication/title/$title"
+    def searchByTitle(){
+        def somePublications = publicationService.searchByTitle(params.title as String)
+        if (somePublications.size() == 0) {
+            render status: 404
+        }
+        else{
+            respond somePublications
+        }
+    }
+
 
 }

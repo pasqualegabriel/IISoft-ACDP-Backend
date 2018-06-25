@@ -25,12 +25,14 @@ grails.plugin.springsecurity.interceptUrlMap = [
 		[pattern: '/user',               		   access: ['isFullyAuthenticated()']],
 		[pattern: '/user/**',            		   access: ['permitAll']],
 		[pattern: '/newUser',            		   access: ['permitAll']],
+		[pattern: '/user/mail/**',            	   access: ['permitAll']],
 
 		[pattern: '/categories',                   access: ['isFullyAuthenticated()']],
 		[pattern: '/publications',                 access: ['isFullyAuthenticated()']],
 		[pattern: '/publication',            	   access: ['isFullyAuthenticated()']],
 		[pattern: '/publication/subscriber/**',    access: ['isFullyAuthenticated()']],
 		[pattern: '/publication/**',               access: ['isFullyAuthenticated()']],
+		[pattern: '/publication/title/**',         access: ['isFullyAuthenticated()']],
 
 		[pattern: '/comments/**',          		   access: ['isFullyAuthenticated()']],
 		[pattern: '/commentary',            	   access: ['isFullyAuthenticated()']],
@@ -42,19 +44,20 @@ grails.plugin.springsecurity.interceptUrlMap = [
 		[pattern: '/**',             access: ['permitAll']]
     ]
 
-
     grails.plugin.springsecurity.filterChain.chainMap = [
 
 			[pattern: '/users',               		filters:'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter'],
 			[pattern: '/user',                		filters:'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter'],
 			[pattern: '/user/**',            		filters:'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter'],
 			[pattern: '/newUser',            		filters:'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter'],
+			[pattern: '/user/mail/**',            		filters:'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter'],
 
 			[pattern: '/categories',                filters:'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter' ],
 			[pattern: '/publications',              filters:'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter' ],
 			[pattern: '/publication',            	filters:'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter' ],
 			[pattern: '/publication/subscriber/**', filters:'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter' ],
 			[pattern: '/publication/**',            filters:'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter' ],
+			[pattern: '/publication/title/**',      filters:'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter' ],
 
 			[pattern: '/comments/**',        		filters:'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter' ],
 			[pattern: '/commentary',       			filters:'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter' ],

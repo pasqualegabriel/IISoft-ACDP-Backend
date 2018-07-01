@@ -19,7 +19,7 @@ class PublicationControllerSpec extends HibernateSpec implements ControllerUnitT
         aPublication        = new Publication(text:"CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS" ,idCategory: 1,name: "Retrospective",
                                               title: "RetrospectiveIISoft",
                                               whoPublishedIt: "Diego",
-                                              date: new Date(2018, 06, 22))
+                                              date: new Date(2018, 06, 22),tags:["#Elementos de Ingenieria"] )
         aPublications       = [aPublication]
         aPublication.save()
         aPublicationService = new PublicationService()
@@ -36,12 +36,12 @@ class PublicationControllerSpec extends HibernateSpec implements ControllerUnitT
                     id              1
                     title           publication.title
                     date            publication.date
+                    tags            publication.tags
                     idCategory      publication.idCategory
                     subscribers     publication.subscribers
                     whoPublishedIt  publication.whoPublishedIt
                     text            publication.text
                     cantSubscribers publication.cantSubscribers
-
                 }
             } as JSON
 
@@ -58,14 +58,14 @@ class PublicationControllerSpec extends HibernateSpec implements ControllerUnitT
             Publication aNewPublication        = new Publication(text:"CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS" ,idCategory: 5,name: "Retrospectivepepe",
                                                   title: "RetrospectiveIISoftdepepe",
                                                   whoPublishedIt: "Diego",
-                                                  date: new Date(2013, 07, 22))
+                                                  date: new Date(2013, 07, 22),tags:["#Elementos de Ingenieria","#Pepe"])
 
             aNewPublication.save()
 
             Publication aNotherPublication     = new Publication(text:"CHAMULLA ACA IVAN MANDAME EL STRING QUE QUIERAS", idCategory: 5, name: "Retrospectivepepin",
                                                   title: "RetrospectiveIISoftdepepin",
                                                   whoPublishedIt: "Diego",
-                                                  date: new Date(2015, 06, 22))
+                                                  date: new Date(2015, 06, 22),tags:["#Elementos de Ingenieria","#Sprint"])
             aNotherPublication.save()
 
 
@@ -78,6 +78,7 @@ class PublicationControllerSpec extends HibernateSpec implements ControllerUnitT
                     id              publication.id
                     title           publication.title
                     date            publication.date
+                    tags            publication.tags
                     idCategory      publication.idCategory
                     subscribers     publication.subscribers
                     whoPublishedIt  publication.whoPublishedIt
@@ -109,9 +110,11 @@ class PublicationControllerSpec extends HibernateSpec implements ControllerUnitT
 
     void "when requested to save a publication, it is saved"() {
         given:
+            def tagss = ["#Elementos de Ingenieria","#Sprint"]
             def aNewPublicationJson = aJsonBuilder {
                 title           "un titulo x"
                 text            "un texto x"
+                tags            tagss.collect {[it]}
                 idCategory      32
                 date            new Date(2015, 06, 22)
                 whoPublishedIt "un Nombre x"

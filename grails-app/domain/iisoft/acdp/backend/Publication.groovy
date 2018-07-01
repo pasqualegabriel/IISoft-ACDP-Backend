@@ -8,6 +8,7 @@ class Publication {
     String       text
     Date         date
     int          cantSubscribers
+    List<String> tags
     List<String> subscribers
 
     Publication(){

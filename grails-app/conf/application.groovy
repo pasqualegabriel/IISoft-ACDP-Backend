@@ -23,7 +23,11 @@ grails.plugin.springsecurity.interceptUrlMap = [
 
 		[pattern: '/users',              		   access: ['permitAll']],
 		[pattern: '/user',               		   access: ['isFullyAuthenticated()']],
+
+
 		[pattern: '/user/**',            		   access: ['permitAll']],
+		[pattern: '/userWorkProfile/**',           access: ['permitAll']],
+		[pattern: '/userAcademicProfile/**',       access: ['permitAll']],
 		[pattern: '/newUser',            		   access: ['permitAll']],
 		[pattern: '/user/mail/**',            	   access: ['permitAll']],
 
@@ -49,8 +53,11 @@ grails.plugin.springsecurity.interceptUrlMap = [
 			[pattern: '/users',               		filters:'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter'],
 			[pattern: '/user',                		filters:'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter'],
 			[pattern: '/user/**',            		filters:'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter'],
+			[pattern: '/userWorkProfile/**',        filters:'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter'],
+			[pattern: '/userAcademicProfile/**',    filters:'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter'],
+
 			[pattern: '/newUser',            		filters:'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter'],
-			[pattern: '/user/mail/**',            		filters:'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter'],
+			[pattern: '/user/mail/**',              filters:'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter'],
 
 			[pattern: '/categories',                filters:'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter' ],
 			[pattern: '/publications',              filters:'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter' ],

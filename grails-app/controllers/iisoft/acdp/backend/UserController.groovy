@@ -31,17 +31,59 @@ class UserController extends RestfulController<UserProfile> {
         }
     }
 
+    //get   "/userWorkProfile/$userName"
+    def getUserWorkProfileByUserName(){
+        UserWorkProfile user = userService.getUserWorkProfileByUserName(params.userName as String)
+        if (user == null) {
+            render status: 404
+        }
+        else {
+            respond user
+        }
+    }
+
+    //get    "/userAcademicProfile/$userName"
+    def getUserAcademicProfileByUserName(){
+        UserAcademicProfile user = userService.getUserAcademicProfileByUserName(params.userName as String)
+        if (user == null) {
+            render status: 404
+        }
+        else {
+            respond user
+        }
+    }
+
     //post    "/user"
-    def saveUser(UserProfile anUser){
-        if(leCorrespondeElProfile(anUser)){
-            userService.saveProfile(anUser)
+    def saveUser(UserProfile anUserProfile){
+        if(leCorrespondeElProfile(anUserProfile)){
+            userService.saveProfile(anUserProfile)
         }
         else{
             render status: 403
         }
     }
 
-    boolean leCorrespondeElProfile(UserProfile anUser) {
+    //post    "/user"
+    def saveUserWorkProfile(UserWorkProfile anUserWorkProfile){
+        if(leCorrespondeElProfile(anUserWorkProfile)){
+            userService.saveWorkProfile(anUserWorkProfile)
+        }
+        else{
+            render status: 403
+        }
+    }
+
+    //post    "/user"
+    def saveUserAcademicProfile(UserAcademicProfile anUserAcademicProfile){
+        if(leCorrespondeElProfile(anUserAcademicProfile)){
+            userService.saveAcademicProfile(anUserAcademicProfile)
+        }
+        else{
+            render status: 403
+        }
+    }
+
+    Boolean leCorrespondeElProfile(Profile anUser) {
         NormalUser currentUser = springSecurityService.currentUser
         anUser.userID == currentUser.id
     }

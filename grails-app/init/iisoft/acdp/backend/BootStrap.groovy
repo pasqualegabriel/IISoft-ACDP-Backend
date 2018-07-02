@@ -43,6 +43,23 @@ class BootStrap {
         def pabloProfile = new UserProfile(userName:"pablo",name:"Pablo", surname: "Suarez", mail: "pablo@gmail.com", birthDate: new Date(2018, 06, 22), userID: pabloUser.getId()).save()
         def camiProfile = new UserProfile(userName:"cami",name:"Cami", surname: "Cintioli", mail: "cami@gmail.com", birthDate: new Date(2018, 06, 22), userID: camiUser.getId()).save()
 
+        def pepitaWorkProfile = new UserWorkProfile(work:"devop",git:"www.git.com/pepita", linkedin:"wwww.linkedin.com/pepita",userID: pepitaUser.getId() ).save()
+        def ivanWorkProfile = new UserWorkProfile(work:"devop",git:"www.git.com/pepita", linkedin:"wwww.linkedin.com/pepita", userID: ivanUser.getId()).save()
+        def nahuWorkProfile = new UserWorkProfile(work:"devop",git:"www.git.com/pepita", linkedin:"wwww.linkedin.com/pepita", userID: nahuUser.getId()).save()
+        def gabiWorkProfile = new UserWorkProfile(work:"devop",git:"www.git.com/pepita", linkedin:"wwww.linkedin.com/pepita", userID:  gabiUser.getId()).save()
+        def victorWorkProfile = new UserWorkProfile(work:"devop",git:"www.git.com/pepita", linkedin:"wwww.linkedin.com/pepita", userID: victorUser.getId()).save()
+        def diegoWorkProfile = new UserWorkProfile(work:"devop",git:"www.git.com/pepita", linkedin:"wwww.linkedin.com/pepita", userID: diegoUser.getId()).save()
+        def pabloWorkProfile = new UserWorkProfile(work:"devop",git:"www.git.com/pepita", linkedin:"wwww.linkedin.com/pepita", userID: pabloUser.getId()).save()
+        def camiWorkProfile = new UserWorkProfile(work:"devop",git:"www.git.com/pepita", linkedin:"wwww.linkedin.com/pepita", userID: camiUser.getId()).save()
+
+        def pepitaAcademicProfile = new UserAcademicProfile(career: "tpi", approvedSubjects:["Intro","Orga"], userID: pepitaUser.getId() ).save()
+        def ivanAcademicProfile = new UserAcademicProfile(career: "tpi", approvedSubjects:["Intro","Orga"], userID: ivanUser.getId()).save()
+        def nahuAcademicProfile = new UserAcademicProfile(career: "tpi", approvedSubjects:["Intro","Orga"], userID: nahuUser.getId()).save()
+        def gabiAcademicProfile = new UserAcademicProfile(career: "tpi", approvedSubjects:["Intro","Orga"], userID:  gabiUser.getId()).save()
+        def victorAcademicProfile = new UserAcademicProfile(career: "tpi", approvedSubjects:["Intro","Orga"], userID: victorUser.getId()).save()
+        def diegoAcademicProfile= new UserAcademicProfile(career: "tpi", approvedSubjects:["Intro","Orga"], userID: diegoUser.getId()).save()
+        def pabloAcademicProfile = new UserAcademicProfile(career: "tpi", approvedSubjects:["Intro","Orga"], userID: pabloUser.getId()).save()
+        def camiAcademicProfile = new UserAcademicProfile(career: "tpi", approvedSubjects:["Intro","Orga"], userID: camiUser.getId()).save()
 
 
         def category1 = new Category(name:"IISoftware" )

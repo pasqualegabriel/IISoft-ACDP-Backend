@@ -164,6 +164,145 @@ class UserControllerSpec extends HibernateSpec implements ControllerUnitTest<Use
         assertNotNull(UserProfile.findByUserName("gokuUser"))
     }
 
+    void "when the controller is requested for the userworkProfile of an userName it returns that userWorkProfile"() {
+        given:
+        def pepitaWorkProfile = new UserWorkProfile(userID:pepitaProfile.userID,  work: "Devop", git: "www.git.com/pepita", linkedin: "wwww.linkedin.com/pepita")
+        pepitaWorkProfile.save()
+
+        def pepitaworkProfileJson = aJsonBuilder {
+            id        pepitaWorkProfile.id
+            userID    pepitaProfile.userID
+            linkedin  pepitaWorkProfile.linkedin
+            git       pepitaWorkProfile.git
+            work      pepitaWorkProfile.work
+        } as JSON
+
+        params.userName = "PepitaUser"
+
+        when:
+        controller.getUserWorkProfileByUserName()
+
+        then:
+        assertEquals(200, response.status)
+        assertEquals(pepitaworkProfileJson.toString(), response.contentAsString)
+    }
+
+    void "when requested to save a workprofile and its the profile of the currently logged in user, it is saved"() {
+        given:
+        NormalUser currentUser = new NormalUser(username: "pepito",password: "azul").save()
+        anMockSpringSecurityService.currentUser >> currentUser
+
+        def pepitaWorkProfile = new UserWorkProfile(userID:currentUser.id,  work: "Devop", git: "www.git.com/pepita", linkedin: "wwww.linkedin.com/pepita")
+
+        def pepitaworkProfileJson = aJsonBuilder {
+            userID    currentUser.id
+            linkedin  pepitaWorkProfile.linkedin
+            git       pepitaWorkProfile.git
+            work      pepitaWorkProfile.work
+        } as JSON
+
+        request.setMethod("POST")
+        request.setJSON(pepitaworkProfileJson)
+
+        when:
+        controller.saveUserWorkProfile()
+
+        then:
+        assertEquals(200, response.status)
+        assertNotNull(UserWorkProfile.findByLinkedin(pepitaWorkProfile.linkedin))
+    }
+
+    void "when requested to save a workprofile and its not the profile of the currently logged in user, it returns 403"() {
+        given:
+        NormalUser currentUser = new NormalUser(username: "pepito",password: "azul").save()
+        anMockSpringSecurityService.currentUser >> currentUser
+        def pepitaWorkProfile = new UserWorkProfile(userID:123123123,  work: "Devop", git: "www.git.com/pepita", linkedin: "wwww.linkedin.com/pepita")
+
+        def pepitaworkProfileJson = aJsonBuilder {
+            userID    123123123
+            linkedin  pepitaWorkProfile.linkedin
+            git       pepitaWorkProfile.git
+            work      pepitaWorkProfile.work
+        } as JSON
+
+        request.setMethod("POST")
+        request.setJSON(pepitaworkProfileJson)
+
+        when:
+        controller.saveUserWorkProfile()
+
+        then:
+        assertEquals(403, response.status)
+    }
 
 
+
+    void "when the controller is requested for the userAcademicProfile of an userName it returns that userAcademicProfile"() {
+        given:
+        def pepitaAcademicProfile = new UserAcademicProfile(userID:pepitaProfile.userID,  career: "TPI", approvedSubjects:["Intro","Orga"])
+        pepitaAcademicProfile.save()
+
+        def pepitaAcademicProfileJson = aJsonBuilder {
+            id        pepitaAcademicProfile.id
+            userID    pepitaAcademicProfile.userID
+            approvedSubjects pepitaAcademicProfile.approvedSubjects.collect {it}
+            career    pepitaAcademicProfile.career
+        } as JSON
+
+        params.userName = "PepitaUser"
+
+        when:
+        controller.getUserAcademicProfileByUserName()
+
+        then:
+        assertEquals(200, response.status)
+        assertEquals(pepitaAcademicProfileJson.toString(), response.contentAsString)
+    }
+
+    void "when requested to save a academicprofile and its the profile of the currently logged in user, it is saved"() {
+        given:
+        NormalUser currentUser = new NormalUser(username: "pepito",password: "azul").save()
+        anMockSpringSecurityService.currentUser >> currentUser
+
+        def pepitaAcademicProfile = new UserAcademicProfile(userID:currentUser.id,  career: "TPI", approvedSubjects:["Intro","Orga"])
+
+        def pepitaAcademicProfileJson = aJsonBuilder {
+            userID    pepitaAcademicProfile.userID
+            career    pepitaAcademicProfile.career
+            approvedSubjects pepitaAcademicProfile.approvedSubjects.collect {[it]}
+        } as JSON
+
+        request.setMethod("POST")
+        request.setJSON(pepitaAcademicProfileJson)
+
+        when:
+        controller.saveUserAcademicProfile()
+
+        then:
+        assertEquals(200, response.status)
+        assertNotNull(UserAcademicProfile.findByCareer(pepitaAcademicProfile.career))
+    }
+
+    void "when requested to save a academicProfile and its not the profile of the currently logged in user, it returns 403"() {
+        given:
+        NormalUser currentUser = new NormalUser(username: "pepito",password: "azul").save()
+        anMockSpringSecurityService.currentUser >> currentUser
+
+        def pepitaAcademicProfile = new UserAcademicProfile(userID:123123132,  career: "TPI", approvedSubjects:["Intro","Orga"])
+
+        def pepitaAcademicProfileJson = aJsonBuilder {
+            userID    pepitaAcademicProfile.userID
+            career    pepitaAcademicProfile.career
+            approvedSubjects pepitaAcademicProfile.approvedSubjects.collect {[it]}
+        } as JSON
+
+        request.setMethod("POST")
+        request.setJSON(pepitaAcademicProfileJson)
+
+        when:
+        controller.saveUserAcademicProfile()
+
+        then:
+        assertEquals(403, response.status)
+    }
 }

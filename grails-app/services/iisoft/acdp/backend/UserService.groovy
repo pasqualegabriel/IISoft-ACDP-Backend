@@ -33,4 +33,24 @@ class UserService {
     def getUserByMail(String aMail) {
         UserProfile.findByMail(aMail)
     }
+
+    UserWorkProfile getUserWorkProfileByUserName(String anUserName) {
+        //nota: esto es recontra make it work. Hay que hacer una query con join para hacerlo bien.
+        def userID = UserProfile.findByUserName(anUserName).userID
+        UserWorkProfile.findByUserID(userID)
+    }
+
+    UserAcademicProfile getUserAcademicProfileByUserName(String anUserName) {
+        //nota: esto es recontra make it work. Hay que hacer una query con join para hacerlo bien.
+        def userID = UserProfile.findByUserName(anUserName).userID
+        UserAcademicProfile.findByUserID(userID)
+    }
+
+    def saveWorkProfile(UserWorkProfile userWorkProfile) {
+        userWorkProfile.save()
+    }
+
+    def saveAcademicProfile(UserAcademicProfile userAcademicProfile) {
+        userAcademicProfile.save()
+    }
 }

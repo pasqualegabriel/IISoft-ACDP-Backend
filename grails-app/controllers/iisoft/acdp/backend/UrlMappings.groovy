@@ -13,6 +13,11 @@ class UrlMappings {
 
         get    "/users"                            (controller:"user", action:"allUsers")
         get    "/user/$userName"                   (controller:"user", action:"getUserByUserName")
+        get    "/userWorkProfile/$userName"                   (controller:"user", action:"getUserWorkProfileByUserName")
+        get    "/userAcademicProfile/$userName"                   (controller:"user", action:"getUserAcademicProfileByUserName")
+
+
+
         post   "/user"                             (controller:"user", action:"saveUser")
         post   "/newUser"                          (controller:"user", action:"newUser")
         get   "/user/mail/$mail"                   (controller:"user", action:"mail")

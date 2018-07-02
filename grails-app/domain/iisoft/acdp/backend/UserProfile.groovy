@@ -1,13 +1,13 @@
 package iisoft.acdp.backend
 
-class UserProfile {
+class UserProfile extends Profile{
 
     String userName
     String name
     String surname
     String mail
     Date   birthDate
-    long   userID
+
 
     static constraints = {
         mail       nullable:false, blank:false, maxSize:255, unique:true
@@ -15,6 +15,5 @@ class UserProfile {
         name       nullable:false
         surname    nullable:false
         birthDate  nullable:false
-        userID     nullable:false
     }
 }

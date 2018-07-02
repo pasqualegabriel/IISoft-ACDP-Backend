@@ -72,7 +72,8 @@ class BootStrap {
                                             name           : "Retrospective",
                                             title          : "RetrospectiveIISoft",
                                             whoPublishedIt : diegoUser.username,
-                                            date           : new Date(2018, 06, 22)
+                                            date           : new Date(2018, 06, 22),
+					    tags:["#Elementos de Ingenieria","#Pepe"]
                                           )
         publication1.subscribe(ivanUser.username)
 
@@ -81,7 +82,8 @@ class BootStrap {
                                             name           : "BDD",
                                             title          : "BDDIISoft",
                                             whoPublishedIt : pabloUser.username,
-                                            date           : new Date(2017, 05, 10)
+                                            date           : new Date(2017, 05, 10),
+					    tags:["#Elementos de Ingenieria","#Pepe"]
                                           )
         publication2.subscribe(nahuUser.username)
         publication2.subscribe(gabiUser.username)
@@ -92,7 +94,8 @@ class BootStrap {
                                             name           : "TDD",
                                             title          : "TDDIISoft",
                                             whoPublishedIt : ivanUser.username,
-                                            date           : new Date(2016, 02, 14)
+                                            date           : new Date(2016, 02, 14),
+					    tags:["#Elementos de Ingenieria","#Pepe"]
                                           )
 
         publication3.subscribe(diegoUser.username)

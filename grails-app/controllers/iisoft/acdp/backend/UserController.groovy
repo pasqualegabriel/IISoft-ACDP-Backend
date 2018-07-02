@@ -63,7 +63,7 @@ class UserController extends RestfulController<UserProfile> {
         }
     }
 
-    //post    "/user"
+    //post   "/userWorkProfile
     def saveUserWorkProfile(UserWorkProfile anUserWorkProfile){
         if(leCorrespondeElProfile(anUserWorkProfile)){
             userService.saveWorkProfile(anUserWorkProfile)
@@ -73,7 +73,7 @@ class UserController extends RestfulController<UserProfile> {
         }
     }
 
-    //post    "/user"
+    //post     "/userAcademicProfile
     def saveUserAcademicProfile(UserAcademicProfile anUserAcademicProfile){
         if(leCorrespondeElProfile(anUserAcademicProfile)){
             userService.saveAcademicProfile(anUserAcademicProfile)

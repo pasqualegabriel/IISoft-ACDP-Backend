@@ -94,7 +94,15 @@ class UserController extends RestfulController<UserProfile> {
         NormalUser hidratatedUser = anUserUserForm.hidrateUser()
         userService.newUser(hidratatedUser)
 
-        UserProfile hidratedProfile   = anUserUserForm.hidrateprofile(hidratatedUser.id)
+        long userId = hidratatedUser.id
+
+        UserWorkProfile userworkprofile = new UserWorkProfile(work: "", git:"", linkedin: "", userID: userId)
+        UserAcademicProfile useracademicprofile = new UserAcademicProfile(career: "", approvedSubjects:[""], userID: userId)
+
+        userService.saveWorkProfile(userworkprofile)
+        userService.saveAcademicProfile(useracademicprofile)
+
+        UserProfile hidratedProfile   = anUserUserForm.hidrateprofile(userId)
         userService.saveProfile(hidratedProfile)
     }
 

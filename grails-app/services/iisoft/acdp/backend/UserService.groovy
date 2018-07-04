@@ -16,6 +16,7 @@ class UserService {
         anUser.save()
         Role role = Role.findByAuthority('ROLE_NORMAL_USER')
         NormalUserRole.create(anUser, role,true)
+        return anUser
     }
 
     def getUserByUserName(String anUserName) {
@@ -47,10 +48,19 @@ class UserService {
     }
 
     def saveWorkProfile(UserWorkProfile userWorkProfile) {
+        def userwP= UserWorkProfile.findByUserID(userWorkProfile.userID)
+        if (userwP != null){
+            userWorkProfile.id = userwP.id
+        }
         userWorkProfile.save()
     }
 
     def saveAcademicProfile(UserAcademicProfile userAcademicProfile) {
+        def userwP= UserAcademicProfile.findByUserID(userAcademicProfile.userID)
+        if (userwP != null){
+            userAcademicProfile.id = userwP.id
+        }
+
         userAcademicProfile.save()
     }
 }

@@ -158,6 +158,7 @@ class UserControllerSpec extends HibernateSpec implements ControllerUnitTest<Use
 
         when:
         controller.newUser()
+        long userid= UserProfile.findByUserName("gokuUser").id
 
         then:
         assertEquals(200, response.status)

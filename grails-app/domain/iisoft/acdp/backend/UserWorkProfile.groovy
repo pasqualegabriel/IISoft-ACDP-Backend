@@ -11,4 +11,10 @@ class UserWorkProfile extends Profile {
         git       nullable:true
         linkedin  nullable:true
     }
+
+    def copy(UserWorkProfile userWorkProfile) {
+        work= userWorkProfile.work
+        git = userWorkProfile.git
+        linkedin = userWorkProfile.linkedin
+    }
 }

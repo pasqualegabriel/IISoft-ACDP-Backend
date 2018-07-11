@@ -49,18 +49,13 @@ class UserService {
 
     def saveWorkProfile(UserWorkProfile userWorkProfile) {
         def userwP= UserWorkProfile.findByUserID(userWorkProfile.userID)
-        if (userwP != null){
-            userWorkProfile.id = userwP.id
-        }
-        userWorkProfile.save()
+        userwP.copy(userWorkProfile)
+        userwP.save()
     }
 
     def saveAcademicProfile(UserAcademicProfile userAcademicProfile) {
         def userwP= UserAcademicProfile.findByUserID(userAcademicProfile.userID)
-        if (userwP != null){
-            userAcademicProfile.id = userwP.id
-        }
-
-        userAcademicProfile.save()
+        userwP.copy(userAcademicProfile)
+        userwP.save()
     }
 }

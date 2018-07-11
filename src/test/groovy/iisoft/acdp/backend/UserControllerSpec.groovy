@@ -195,6 +195,8 @@ class UserControllerSpec extends HibernateSpec implements ControllerUnitTest<Use
 
         def pepitaWorkProfile = new UserWorkProfile(userID:currentUser.id,  work: "Devop", git: "www.git.com/pepita", linkedin: "wwww.linkedin.com/pepita")
 
+        new UserWorkProfile(work: "", git:"", linkedin: "", userID:currentUser.id).save()
+
         def pepitaworkProfileJson = aJsonBuilder {
             userID    currentUser.id
             linkedin  pepitaWorkProfile.linkedin
@@ -210,7 +212,7 @@ class UserControllerSpec extends HibernateSpec implements ControllerUnitTest<Use
 
         then:
         assertEquals(200, response.status)
-        assertNotNull(UserWorkProfile.findByLinkedin(pepitaWorkProfile.linkedin))
+        assertEquals(UserWorkProfile.findByUserID(currentUser.id).linkedin, pepitaWorkProfile.linkedin )
     }
 
     void "when requested to save a workprofile and its not the profile of the currently logged in user, it returns 403"() {
@@ -266,6 +268,7 @@ class UserControllerSpec extends HibernateSpec implements ControllerUnitTest<Use
         anMockSpringSecurityService.currentUser >> currentUser
 
         def pepitaAcademicProfile = new UserAcademicProfile(userID:currentUser.id,  career: "TPI", approvedSubjects:["Intro","Orga"])
+        new UserAcademicProfile(career: "", approvedSubjects:[""], userID:currentUser.id).save()
 
         def pepitaAcademicProfileJson = aJsonBuilder {
             userID    pepitaAcademicProfile.userID
@@ -281,7 +284,7 @@ class UserControllerSpec extends HibernateSpec implements ControllerUnitTest<Use
 
         then:
         assertEquals(200, response.status)
-        assertNotNull(UserAcademicProfile.findByCareer(pepitaAcademicProfile.career))
+        assertEquals(UserAcademicProfile.findByUserID(currentUser.id).career, pepitaAcademicProfile.career )
     }
 
     void "when requested to save a academicProfile and its not the profile of the currently logged in user, it returns 403"() {

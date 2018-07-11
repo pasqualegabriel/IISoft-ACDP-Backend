@@ -10,4 +10,9 @@ class UserAcademicProfile extends Profile {
         career      nullable:true
 
     }
+
+    def copy(UserAcademicProfile userAcademicProfile) {
+        career = userAcademicProfile.career
+        approvedSubjects = userAcademicProfile.approvedSubjects
+    }
 }

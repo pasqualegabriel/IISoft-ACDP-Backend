@@ -99,8 +99,8 @@ class UserController extends RestfulController<UserProfile> {
         UserWorkProfile userworkprofile = new UserWorkProfile(work: "", git:"", linkedin: "", userID: userId)
         UserAcademicProfile useracademicprofile = new UserAcademicProfile(career: "", approvedSubjects:[""], userID: userId)
 
-        userService.saveWorkProfile(userworkprofile)
-        userService.saveAcademicProfile(useracademicprofile)
+        userworkprofile.save()
+        useracademicprofile.save()
 
         UserProfile hidratedProfile   = anUserUserForm.hidrateprofile(userId)
         userService.saveProfile(hidratedProfile)

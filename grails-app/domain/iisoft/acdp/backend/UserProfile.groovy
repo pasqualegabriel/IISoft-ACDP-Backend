@@ -7,7 +7,11 @@ class UserProfile extends Profile{
     String surname
     String mail
     Date   birthDate
-
+    String  work
+    String  git
+    String  linkedin
+    String        career
+    List<String>  approvedSubjects
 
     static constraints = {
         mail       nullable:false, blank:false, maxSize:255, unique:true
@@ -15,5 +19,10 @@ class UserProfile extends Profile{
         name       nullable:false
         surname    nullable:false
         birthDate  nullable:false
+        work      nullable:true
+        git       nullable:true
+        linkedin  nullable:true
+        career      nullable:true
+
     }
 }

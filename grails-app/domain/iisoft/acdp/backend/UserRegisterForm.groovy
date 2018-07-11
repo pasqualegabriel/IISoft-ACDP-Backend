@@ -33,7 +33,7 @@ class UserRegisterForm {
     }
 
     UserProfile hidrateprofile(long userID) {
-        UserProfile userProfile = new UserProfile(name: name, surname:surname, mail:mail , birthDate: birthDate, userID: userID,userName: this.userName, )
+        UserProfile userProfile = new UserProfile(name: name, surname:surname, mail:mail , birthDate: birthDate, userID: userID,userName: this.userName, work: "dev", git:"git", linkedin: "linkedin",career: "Tpi", approvedSubjects:["Intro"] )
         return userProfile
     }
 }

@@ -31,29 +31,7 @@ class UserController extends RestfulController<UserProfile> {
         }
     }
 
-    //get   "/userWorkProfile/$userName"
-    def getUserWorkProfileByUserName(){
-        UserWorkProfile user = userService.getUserWorkProfileByUserName(params.userName as String)
-        if (user == null) {
-            render status: 404
-        }
-        else {
-            respond user
-        }
-    }
-
-    //get    "/userAcademicProfile/$userName"
-    def getUserAcademicProfileByUserName(){
-        UserAcademicProfile user = userService.getUserAcademicProfileByUserName(params.userName as String)
-        if (user == null) {
-            render status: 404
-        }
-        else {
-            respond user
-        }
-    }
-
-    //post    "/user"
+        //post    "/user"
     def saveUser(UserProfile anUserProfile){
         if(leCorrespondeElProfile(anUserProfile)){
             userService.saveProfile(anUserProfile)
@@ -63,25 +41,7 @@ class UserController extends RestfulController<UserProfile> {
         }
     }
 
-    //post    "/userWorkProfile"
-    def saveUserWorkProfile(UserWorkProfile anUserWorkProfile){
-        if(leCorrespondeElProfile(anUserWorkProfile)){
-            userService.saveWorkProfile(anUserWorkProfile)
-        }
-        else{
-            render status: 403
-        }
-    }
 
-    // post    "/userAcademicProfile"
-    def saveUserAcademicProfile(UserAcademicProfile anUserAcademicProfile){
-        if(leCorrespondeElProfile(anUserAcademicProfile)){
-            userService.saveAcademicProfile(anUserAcademicProfile)
-        }
-        else{
-            render status: 403
-        }
-    }
 
     Boolean leCorrespondeElProfile(Profile anUser) {
         NormalUser currentUser = springSecurityService.currentUser
@@ -95,12 +55,6 @@ class UserController extends RestfulController<UserProfile> {
         userService.newUser(hidratatedUser)
 
         long userId = hidratatedUser.id
-
-        UserWorkProfile userworkprofile = new UserWorkProfile(work: "", git:"", linkedin: "", userID: userId)
-        UserAcademicProfile useracademicprofile = new UserAcademicProfile(career: "", approvedSubjects:[""], userID: userId)
-
-        userworkprofile.save()
-        useracademicprofile.save()
 
         UserProfile hidratedProfile   = anUserUserForm.hidrateprofile(userId)
         userService.saveProfile(hidratedProfile)

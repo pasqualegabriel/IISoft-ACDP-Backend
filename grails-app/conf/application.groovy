@@ -26,10 +26,7 @@ grails.plugin.springsecurity.interceptUrlMap = [
 
 
 		[pattern: '/user/**',            		   access: ['permitAll']],
-		[pattern: '/userWorkProfile/**',           access: ['permitAll']],
-		[pattern: '/userAcademicProfile/**',       access: ['permitAll']],
-		[pattern: '/userWorkProfile',           access: ['permitAll']],
-		[pattern: '/userAcademicProfile',       access: ['permitAll']],
+
 		[pattern: '/newUser',            		   access: ['permitAll']],
 		[pattern: '/user/mail/**',            	   access: ['permitAll']],
 
@@ -55,11 +52,6 @@ grails.plugin.springsecurity.interceptUrlMap = [
 			[pattern: '/users',               		filters:'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter'],
 			[pattern: '/user',                		filters:'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter'],
 			[pattern: '/user/**',            		filters:'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter'],
-			[pattern: '/userWorkProfile',        filters:'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter'],
-			[pattern: '/userAcademicProfile',    filters:'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter'],
-
-			[pattern: '/userWorkProfile/**',        filters:'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter'],
-			[pattern: '/userAcademicProfile/**',    filters:'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter'],
 
 
 

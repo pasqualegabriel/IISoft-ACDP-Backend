@@ -2,17 +2,34 @@
 
 ## Investigaciones
 
-### Grais (grails run-app, grails test-app)
+### Grails
 
-### React (reutilización de componentes)
+Para correr la aplicación (en este caso la api) desde la terminal se utiliza el siguiente comando:
+$ grails run-app
+Para correr los tests desde la terminal se utiliza el siguiente comando:
+$ grails test-app
 
 ### Travis
+
+Configuración de Travis para que corra todos los test (integración/calidad) de la aplicación (persistencia, dominio, api). 
+Para ello se agregan en el archivo .travis.yml las siguientes lineas:
+
+language: groovy
+
+jdk: 
+ - openjdk8
+
+before_install:
+ - curl -s get.sdkman.io | bash
+ - source "$HOME/.sdkman/bin/sdkman-init.sh"
+ - sdk install grails
+
+script: grails test-app
+
 
 ## Retrospectiva
 
 Método de retrospectiva: Mad, Sad, Glad
-
-### MAD
 
 ### SAD
 

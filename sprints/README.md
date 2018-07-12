@@ -17,5 +17,7 @@ Flujo Principal:
 3 - Usuario: Da la confirmación de alta.
 4 - Sistema: Registra al nuevo usuario.
 
-Flujo alternativo: 2a – campos incorrectos sistema tira una alerta y cancela boton aceptación.
+Flujo alternativo: 
+
+2a – campos incorrectos sistema tira una alerta y cancela boton aceptación.
 

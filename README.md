@@ -16,9 +16,6 @@ Number |       Name              | UNQ-Records |    EMail
 ### Visual Story Mapping 
 ![Visual Story Mapping ACaraDePerro](sprints/vsm.pdf)
 
-### Burndown Chart
-![Burndown Chart ACaraDePerro](sprints/bdc.png)
-
 ### Sprints
 
 - [Sprint 0][1]
@@ -42,5 +39,8 @@ Number |       Name              | UNQ-Records |    EMail
 - [Caso de uso][8]
 
 [8]: ./sprints/README.md
+
+### Burndown Chart
+![Burndown Chart ACaraDePerro](sprints/bdc.png)
 
 

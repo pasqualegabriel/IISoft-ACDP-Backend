@@ -6,7 +6,7 @@ Método de retrospectiva: Mad, Sad, Glad
 
 ### MAD
 
-- Rompieron el FE. Solo un caso de uso.
+- Rompimos el Front-End.
 
 ### SAD
 

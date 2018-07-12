@@ -74,6 +74,75 @@ Destrucción de un componente:
 Se dispara el método componentWillUnmount antes de que se destruya el componente
 El componente es destruido y eliminado del DOM
 
+### React (Comunicación padre-hijo de un componente)
+
+Padre.js
+
+import React from 'react';
+import Hijo2 from './Hijo2';
+import Hijo1 from './Hijo1';
+
+export default class Padre extends React.Component {
+
+  constructor() {
+    super();
+    this.state = {
+      texto: "Por ahora texto"
+    };
+  }
+
+  render(){
+    const hijos = React.Children.forEach(this.props.children, child => { return <p>{child}</p> })
+
+    return <div>
+            <p>{this.state.texto}</p>
+            <Hijo2 aceptar={this.aceptar} />
+            <Hijo1 cancelar={this.cancelar} />
+            <div>{hijos}</div>        
+           </div>
+  }
+
+ //Son Metodos "Handlers" que son pasados a sus hijos para que alteren el estado de su padre
+  aceptar=()=>{
+    this.setState({texto: "aceptar"})
+  }
+
+  cancelar = () => {
+    this.setState({ texto: "cancelar" })
+  }
+
+};
+
+Hijo1.js
+
+export default class Hijo1 extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    return <button onClick={this.props.cancelar}>Cancelar</button>
+  }
+
+};
+
+Hijo2.js
+
+export default class Hijo2 extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+
+  render() {
+    return <button onClick={this.props.aceptar}>Aceptamos</button>
+  }
+
+};
 
 ## Retrospectiva
 
